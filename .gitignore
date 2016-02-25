@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
+
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -15,3 +17,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+/config/database.yml
+.byebug_history
+
+README.rdoc
