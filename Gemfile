@@ -9,7 +9,7 @@ gem "omniauth"
 gem "omniauth-facebook"
 gem "devise"
 gem 'devise_security_extension'
-gem 'angularjs-rails'
+gem 'angularjs-rails', '~> 1.5'
 
 gem 'rails', '4.2.5'
 gem 'browser'
