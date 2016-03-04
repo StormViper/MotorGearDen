@@ -9,7 +9,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
    def create
-     super
+     @user = User.new(user_params)
+     if @user.save
+      p "USER SAVED LOGIN: #{@user.username}"
+      @cart = Cart.create(:user_id => @user.id, :cart_count => 0)
+      @cart.save
+      @user.cart_id = @cart.id
+      @user.save
+      redirect_to root_path
+     else
+      p "USER FAILED LOGIN: #{@user.username}"
+      redirect_to root_path
+     end
    end
 
   # GET /resource/edit
@@ -37,6 +48,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+
+  private
+
+  def user_params
+    params.require(:user).permit( :email, :password, :password_confirmation, :username )
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

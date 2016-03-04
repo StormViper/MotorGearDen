@@ -1,5 +1,25 @@
-<h1>Hello world!</h1>
-<p>1 + 1 = {{1+1}}</p>
-
-<%= "You are logged in" if user_signed_in? %><br />
 <%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in?%>
+
+
+<%= link_to 'Empty cart', empty_cart_path %><br>
+<table>
+	<tr><%= @product.product_name if user_signed_in?%> </tr><br>
+	<tr><%= @product.product_description if user_signed_in?%></tr><br>
+	<tr><%= @product.product_price if user_signed_in?%></tr><br>
+	<tr><%= link_to 'Add to cart', cart_add_item_path(@product.product_id) if user_signed_in?%><br></tr>
+</table>
+<table>
+	<tr><%= @product_satan.product_name if user_signed_in?%></tr><br>
+	<tr><%= @product_satan.product_description if user_signed_in?%></tr><br>
+	<tr><%= @product_satan.product_price if user_signed_in?%></tr><br>
+	<tr><%= link_to 'Add to cart', cart_add_item_path(@product_satan.product_id) if user_signed_in?%><br></tr>
+</table>
+
+CART ITEM:<%= @cart_product.product_name if @cart.cart_count > 0 if user_signed_in?%><br>
+CART DESCRIPTION: <%= @cart_product.product_description if @cart.cart_count > 0 if user_signed_in?%><br>
+CART PRICE: <%= @cart_product.product_price if @cart.cart_count > 0 if user_signed_in?%><br>
+
+<hr>
+CART ITEM:<%= @cart_product_satan.product_name if @cart.cart_count > 1 if user_signed_in?%><br>
+CART DESCRIPTION: <%= @cart_product_satan.product_description if @cart.cart_count > 1 if user_signed_in?%><br>
+CART PRICE: <%= @cart_product_satan.product_price if @cart.cart_count > 1 if user_signed_in?%><br>

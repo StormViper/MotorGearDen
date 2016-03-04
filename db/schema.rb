@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160229151104) do
+ActiveRecord::Schema.define(version: 20160304144647) do
+
+  create_table "carts", force: :cascade do |t|
+    t.string   "cart_slot_one"
+    t.string   "cart_slot_two"
+    t.string   "cart_slot_three"
+    t.string   "cart_slot_four"
+    t.string   "cart_slot_five"
+    t.string   "cart_slot_six"
+    t.string   "cart_slot_seven"
+    t.string   "cart_slot_eight"
+    t.string   "cart_slot_nine"
+    t.string   "cart_slot_ten"
+    t.integer  "user_id",         null: false
+    t.integer  "product_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "cart_count"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer  "product_id",          null: false
+    t.float    "product_price",       null: false
+    t.integer  "cart_id"
+    t.string   "product_name",        null: false
+    t.string   "product_description", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -29,9 +57,12 @@ ActiveRecord::Schema.define(version: 20160229151104) do
     t.string   "provider"
     t.string   "uid"
     t.string   "username"
+    t.string   "login"
+    t.integer  "cart_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["login"], name: "index_users_on_login", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
