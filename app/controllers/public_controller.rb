@@ -2,11 +2,12 @@ class PublicController < ApplicationController
 	def homepage
 		if user_signed_in?
 			@cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
-			@cart_items = [@cart.cart_slot_one, @cart.cart_slot_two, @cart.cart_slot_three, @cart.cart_slot_four, @cart.cart_slot_five,
-										 @cart.cart_slot_six, @cart.cart_slot_seven, @cart.cart_slot_eight, @cart.cart_slot_nine, @cart.cart_slot_ten]
+			@slots = @cart.slots.first
+			@slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
+									  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
 	    @user_products = []
 	    @product = []
-			@cart_items.each do |item|
+			@slot_list.each do |item|
 			if item.nil?
 					p 'Item empty'
 				else				

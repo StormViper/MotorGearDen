@@ -3,30 +3,59 @@ class CartController < ApplicationController
 	def add_item_to_cart
 		redirect_to root_path if !user_signed_in?
 		@product = Product.where(:product_id => params[:format]).first
-		@cart = Cart.where(:user_id => current_user.id).first
-		@cart_items = [@cart.cart_slot_one, @cart.cart_slot_two, @cart.cart_slot_three, @cart.cart_slot_four, @cart.cart_slot_five,
-									 @cart.cart_slot_six, @cart.cart_slot_seven, @cart.cart_slot_eight, @cart.cart_slot_nine, @cart.cart_slot_ten]
-    @cart_items.each do |item|
-    	if item.nil?
-    		@selected_one = @product.product_id
-    		if !item.nil?
-    			nil
-    		end
-    	end
-    end
-    debugger
-    @cast = Cart.where("user_id = ? AND cart_slot_one = ? AND cart_slot_two = ? AND cart_slot_three = ? AND cart_slot_four = ? AND cart_slot_five = ?
-    										cart_slot_six = ? AND cart_slot_seven = ? AND cart_slot_eight = ? AND cart_slot_nine = ? AND cart_slot_ten = ?", current_user.id, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, ).first
-
-    p 'Hello world'
+		@cart = current_user.carts.first
+		@slots = @cart.slots.first
+		if @slots.slot_one == nil
+			@slots.slot_one = @product.product_id
+			nil
+		elsif @slots.slot_two == nil
+			@slots.slot_two = @product.product_id
+			nil
+		elsif @slots.slot_three == nil
+			@slots.slot_three = @product.product_id
+			nil
+		elsif @slots.slot_four == nil
+			@slots.slot_four = @product.product_id
+			nil
+		elsif @slots.slot_five == nil
+			@slots.slot_five = @product.product_id
+			nil
+		elsif @slots.slot_six == nil
+			@slots.slot_six = @product.product_id
+			nil
+		elsif @slots.slot_seven == nil
+			@slots.slot_seven = @product.product_id
+			nil
+		elsif @slots.slot_eight == nil
+			@slots.slot_eight = @product.product_id
+			nil
+		elsif @slots.slot_nine == nil
+			@slots.slot_nine = @product.product_id
+			nil
+		elsif @slots.slot_nine == nil
+			@slots.slot_ten = @product.product_id
+			nil
+		end
+		@slots.save
 		redirect_to root_path
 	end
 
+
 	def empty_cart
-		@cart = current_user
-		@cart.cart_number = 0
-		@cart.cart_inventory = ''
-		@cart.save
+		@cart = current_user.carts.first
+		@slots = @cart.slots.first
+		@slots.slot_one = nil
+		@slots.slot_two = nil
+		@slots.slot_three = nil
+		@slots.slot_four = nil
+		@slots.slot_five = nil
+
+		@slots.slot_six = nil
+		@slots.slot_seven = nil
+		@slots.slot_eight = nil
+		@slots.slot_nine = nil
+		@slots.slot_ten = nil
+		@slots.save
 		redirect_to root_path
 	end
 end

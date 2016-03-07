@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_one :carts
+  has_many :carts
+  has_many :slots, through: :carts
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_accessor :login

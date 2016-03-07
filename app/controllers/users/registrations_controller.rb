@@ -13,9 +13,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
      if @user.save
       p "USER SAVED LOGIN: #{@user.username}"
       @cart = Cart.create(:user_id => @user.id, :cart_count => 0)
-      @cart.save
       @user.cart_id = @cart.id
       @user.save
+
+      @slot = Slot.create(:cart_id => @cart.id)
+      @cart.slot_id = @slot.id
+      @cart.save
+
       redirect_to root_path
      else
       p "USER FAILED LOGIN: #{@user.username}"
