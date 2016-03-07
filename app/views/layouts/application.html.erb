@@ -5,11 +5,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script src="assets/motorgearden.js"></script>
+  <script src="../assets/motorgearden.js"></script>
 </head>
-<body ng-app="motorHome">
-
-<%= yield %>
+<body ng-controller="motorHome">
+<div class="container">
+	<%= yield %>
+</div>
 
 </body>
 </html>
