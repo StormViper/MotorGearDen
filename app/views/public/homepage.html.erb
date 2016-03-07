@@ -4,10 +4,10 @@
 <%= link_to 'Empty cart', empty_cart_path %><br>
 <% if user_signed_in? %>
 	<% @user_products.each do |item| %>
-
 		<b>Product name:</b> <%= item.product_name %><br>
 		<b>Product description:</b> <%= item.product_description %><br>
 		<b>Product price:</b> <%= item.product_price %><hr>
-
 	<% end %>
 <% end %>
+
+<%= link_to 'Add to cart', cart_add_item_path(1) %>
