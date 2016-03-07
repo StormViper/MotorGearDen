@@ -1,13 +1,15 @@
 <%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in?%>
+<%= link_to "Log in", user_session_path if !user_signed_in? %><br>
+<%= link_to "Sign in", new_user_registration_path if !user_signed_in? %>
 
-
-<%= link_to 'Empty cart', empty_cart_path %><br>
+<%= link_to 'Empty cart', empty_cart_path if user_signed_in?%><br>
 <% if user_signed_in? %>
 	<% @user_products.each do |item| %>
+		<img src="<%= item.image_url %>" alt="<%= item.product_name %>" width="350" height="225"><br />
 		<b>Product name:</b> <%= item.product_name %><br>
 		<b>Product description:</b> <%= item.product_description %><br>
 		<b>Product price:</b> <%= item.product_price %><hr>
 	<% end %>
 <% end %>
 
-<%= link_to 'Add to cart', cart_add_item_path(1) %>
+<%= link_to 'Add to cart', cart_add_item_path(1) if user_signed_in? %>
