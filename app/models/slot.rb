@@ -1,3 +1,3 @@
 class Slot < ActiveRecord::Base
-	belongs_to :carts, dependent: :destroy
+	belongs_to :carts
 end

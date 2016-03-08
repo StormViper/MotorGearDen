@@ -10,13 +10,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
      @user = User.new(user_params)
+     debugger
      if @user.save
       p "USER SAVED LOGIN: #{@user.username}"
       @cart = Cart.create(:user_id => @user.id, :cart_count => 0)
+      @cart.save
       @user.cart_id = @cart.id
       @user.save
 
       @slot = Slot.create(:cart_id => @cart.id)
+      @slot.save
       @cart.slot_id = @slot.id
       @cart.save
 

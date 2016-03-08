@@ -64,4 +64,10 @@ class Cart::CartController < ApplicationController
 		@cart.save
 		redirect_to root_path
 	end
+
+	def destroy
+		@cart = current_user.carts.first
+		@cart.destroy
+		redirect_to root_path
+	end
 end
