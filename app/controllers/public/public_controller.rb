@@ -1,4 +1,4 @@
-class PublicController < ApplicationController
+class Public::PublicController < ApplicationController
 	def homepage
 		if user_signed_in?
 			@cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
