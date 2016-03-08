@@ -5,7 +5,8 @@
 		<div align="center"> <img src="<%= item.image_url %>" alt="<%= item.product_name %>"><br /></div>
 		<b>Product name:</b> <%= item.product_name %><br>
 		<b>Product description:</b><br /> <p class="product-description"><%= item.product_description %></p><br>
-		<b>Product price:</b> <%= item.product_price %><hr>
+		<b>Product price:</b> <%= item.product_price %><br>
+		<%= link_to "add this product to your cart", cart_add_item_path(item.product_id) %><hr>
 	<% end %>
 <% end %>
 
