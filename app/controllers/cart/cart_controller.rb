@@ -1,5 +1,5 @@
 require 'json'
-class CartController < ApplicationController
+class Cart::CartController < ApplicationController
 	def add_item_to_cart
 		redirect_to root_path if !user_signed_in?
 		@product = Product.where(:product_id => params[:format]).first
@@ -32,11 +32,15 @@ class CartController < ApplicationController
 		elsif @slots.slot_nine == nil
 			@slots.slot_nine = @product.product_id
 			nil
-		elsif @slots.slot_nine == nil
+		elsif @slots.slot_ten == nil
 			@slots.slot_ten = @product.product_id
 			nil
 		end
 		@slots.save
+		if @slots.save && @cart.cart_count < 10
+				@cart.cart_count += 1
+				@cart.save
+		end
 		redirect_to root_path
 	end
 
@@ -56,6 +60,14 @@ class CartController < ApplicationController
 		@slots.slot_nine = nil
 		@slots.slot_ten = nil
 		@slots.save
+		@cart.cart_count = 0
+		@cart.save
+		redirect_to root_path
+	end
+
+	def destroy
+		@cart = current_user.carts.first
+		@cart.destroy
 		redirect_to root_path
 	end
 end

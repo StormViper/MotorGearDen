@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+    	<%= link_to "MotorGearDen", root_path, class: "navbar-brand", :onclick => 'addToCart()' %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+  <%  #   <form class="navbar-form navbar-left" role="search">
+       #<div class="form-group">
+         # <input type="text" class="form-control" placeholder="Search">
+        #</div>
+       # <button type="submit" class="btn btn-default">Submit</button>
+      #</form> 
+   %>
+
+      <ul class="nav navbar-nav navbar-right">
+      	<li><%= link_to "Log in", user_session_path if !user_signed_in? %></li>
+      	<li><%= link_to "Sign up", new_user_registration_path if !user_signed_in? %></li>
+
+      	<li><a>Cart items: <%= current_user.carts.first.cart_count if user_signed_in? %></a></li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in? %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
