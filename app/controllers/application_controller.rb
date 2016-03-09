@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  helper_method :user_is_admin?
+  helper_method :user_is_admin?, :authenticate_admin!
 
 protected
   def configure_permitted_parameters
@@ -14,6 +14,10 @@ protected
   end
 
   def user_is_admin?
+    current_user.admin? if user_signed_in?
+  end
+
+  def authenticate_admin!
     if user_signed_in?
       if !current_user.admin?
         redirect_to root_path
