@@ -6,7 +6,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li>
       </ul>
   <%  #   <form class="navbar-form navbar-left" role="search">
@@ -20,9 +20,11 @@
       <ul class="nav navbar-nav navbar-right">
       	<li><%= link_to "Log in", user_session_path if !user_signed_in? %></li>
       	<li><%= link_to "Sign up", new_user_registration_path if !user_signed_in? %></li>
-
-      	<li><a>Cart items: <%= current_user.carts.first.cart_count if user_signed_in? %></a></li>
+        <% if user_signed_in? %>
+      	 <li><a>Cart items: <%= current_user.carts.first.cart_count %></a></li>
+        <% end %>
         <li><%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in? %></li>
+        <li><a><%= "Your an admin Harry!" if user_is_admin?%></a></li>
       </ul>
     </div>
   </div>
