@@ -1,0 +1,26 @@
+<h2>Create a new product</h2>
+<span class="help-block">This page is monitored and logged - only add new products if you have all the correct details. 
+If you are using this page unauthorised, legal action will be taken against you.</span>
+<%= console%>
+
+<%= form_for(@product, url: product_create_path, method: :post) do |p|%>
+
+	<%= p.label "**Product ID: " %>
+	<%= p.text_field :product_id %><br>
+
+	<%= p.label "**Product Name" %>
+	<%= p.text_field :product_name %><br>
+
+	<%= p.label "**Product Description" %>
+	<%= p.text_field :product_description %><br>
+
+	<%= p.label "**Product image URL" %>
+	<%= p.text_field :image_url %><br>
+
+	<%= p.label "**Product Price" %>
+	<%= p.text_field :product_price %><br>
+
+	<%= p.submit %>
+	<span class="help-block">All fields with '**' next to them are required!</span>
+
+<% end %>

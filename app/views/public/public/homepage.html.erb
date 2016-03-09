@@ -12,7 +12,3 @@
 
 <%= link_to 'Lockpick set', cart_add_item_path(1) if user_signed_in? %><br>
 <%= link_to 'Motorcycle jacket', cart_add_item_path(2) if user_signed_in?%><br>
-
-<%= link_to 'destroy cart', destroy_cart_path if user_signed_in? %><br>
-
-<%= link_to 'destroy account', user_registration_path, method: :delete if user_signed_in? %>

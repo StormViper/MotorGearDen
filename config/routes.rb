@@ -56,13 +56,18 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-scope module: 'public' do
-  root 'public#homepage'
-end
+  scope module: 'public' do
+    root 'public#homepage'
+  end
 
   scope module: 'cart' do
     get '/cart_add_item', to: 'cart#add_item_to_cart'
     get '/empty_cart', to: 'cart#empty_cart'
     get '/destroy_cart', to: 'cart#destroy'
+  end
+
+  scope module: 'admin' do
+    get '/product/new', to: 'product#new'
+    post '/product/create', to: 'product#create'
   end
 end
