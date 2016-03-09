@@ -10,7 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
    def create
      @user = User.new(user_params)
-     debugger
      if @user.save
       p "USER SAVED LOGIN: #{@user.username}"
       @cart = Cart.create(:user_id => @user.id, :cart_count => 0)
@@ -26,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to root_path
      else
       p "USER FAILED LOGIN: #{@user.username}"
-      redirect_to root_path
+      render 'new'
      end
    end
 

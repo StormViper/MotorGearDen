@@ -1,5 +1,6 @@
 require 'json'
 class Cart::CartController < ApplicationController
+	before_action :authenticate_user!
 	def add_item_to_cart
 		redirect_to root_path if !user_signed_in?
 		@product = Product.where(:product_id => params[:format]).first
