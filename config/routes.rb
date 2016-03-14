@@ -69,5 +69,6 @@ Rails.application.routes.draw do
   scope module: 'admin' do
     get '/product/new', to: 'product#new'
     post '/product/create', to: 'product#create'
+    get '/product/destroy', to: 'product#destroy'
   end
 end
