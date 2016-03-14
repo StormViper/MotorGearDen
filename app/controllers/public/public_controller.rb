@@ -1,5 +1,6 @@
 class Public::PublicController < ApplicationController
 	def homepage
+			@products = Product.all
 		if user_signed_in?
 			@cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
 			@slots = @cart.slots.first

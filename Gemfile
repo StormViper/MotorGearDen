@@ -12,6 +12,10 @@ gem 'devise_security_extension'
 gem 'angularjs-rails', '~> 1.5'
 gem 'json', '~> 1.8', '>= 1.8.3'
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 
