@@ -6,6 +6,8 @@ class Admin::ProductController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
+		@last_product = Product.last
+		Product.last.nil? ? @product.product_id = 1 : @product.product_id = @last_product.product_id + 1
 
 		if @product.save
 			p "NEW PRODUCT ADDED: #{@product.product_name} | PRODUCT ID: #{@product.id}"
@@ -16,9 +18,16 @@ class Admin::ProductController < ApplicationController
 		end
 	end
 
+	def destroy
+		@product = Product.find(params[:format])
+		@product.destroy!
+		flash[:danger] = "Silently disposed of target"
+		redirect_to root_path
+	end
+
 private
 
 	def product_params
-		params.require(:product).permit(:product_id, :product_name, :product_description, :image_url, :product_price)
+		params.require(:product).permit(:product_id, :product_name, :product_description, :picture, :product_price)
 	end
 end
