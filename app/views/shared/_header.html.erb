@@ -21,7 +21,7 @@
       	<li><%= link_to "Log in", user_session_path if !user_signed_in? %></li>
       	<li><%= link_to "Sign up", new_user_registration_path if !user_signed_in? %></li>
         <% if user_signed_in? %>
-      	 <li><a>Cart items: <%= current_user.carts.first.cart_count %></a></li>
+      	 <li><%= link_to "Cart items #{current_user.carts.first.cart_count.to_s}", cart_path %></li>
         <% end %>
         <li><%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in? %></li>
         <li><a><%= "Your an admin Harry!" if user_is_admin?%></a></li>
