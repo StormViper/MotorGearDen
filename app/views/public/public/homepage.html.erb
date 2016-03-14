@@ -1,20 +1,22 @@
 <%= link_to 'Empty cart', empty_cart_path if user_signed_in?%><br>
-<% if user_signed_in? %>
+<% if user_signed_in?%>
 	<% @user_products.each do |item| %>
 
-		<div align="center"> <%= image_tag p.picture.url, alt: p.product_name %><br /></div>
+		<div align="center"> <%= image_tag item.picture.url, alt: item.product_name if item.picture %><br /></div>
 		<b>Product name:</b> <%= item.product_name %><br>
 		<b>Product description:</b><br /> <p class="product-description"><%= item.product_description %></p><br>
 		<b>Product price:</b> <%= item.product_price %><br>
 		<%= link_to "add this product to your cart", cart_add_item_path(item.product_id) %><hr>
 	<% end %>
 <% end %>
-
 <%= link_to 'Lockpick set', cart_add_item_path(1) if user_signed_in? %><br>
 <%= link_to 'Motorcycle jacket', cart_add_item_path(2) if user_signed_in?%><br>
 
 <% @products.each do |p|%>
-<%= p.product_name %><br>
-<%= image_tag(p.picture.url, alt: p.product_name, size: "450x300") %>
-<%= p.product_id %>
+	<%= p.product_name %><br>
+	<%= image_tag(p.picture.url, alt: p.product_name, size: "450x300") %><br>
+	<%= p.product_id %><br>
+	£<%= p.product_price %><br>
+	<%= link_to 'Delete this Product' , product_destroy_path(p), data: {confirm: "Are you sure?"} if user_is_admin?%><br>
+	<%= link_to "Add item to cart", cart_add_item_path(p.product_id) if user_signed_in? %><br>
 <% end %>
