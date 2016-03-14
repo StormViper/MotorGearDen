@@ -6,6 +6,8 @@ class Admin::ProductController < ApplicationController
 
 	def create
 		@product = Product.new(product_params)
+		@last_product = Product.last
+		@product.product_id = @last_product.product_id + 1
 
 		if @product.save
 			p "NEW PRODUCT ADDED: #{@product.product_name} | PRODUCT ID: #{@product.id}"
@@ -19,6 +21,6 @@ class Admin::ProductController < ApplicationController
 private
 
 	def product_params
-		params.require(:product).permit(:product_id, :product_name, :product_description, :image_url, :product_price)
+		params.require(:product).permit(:product_id, :product_name, :product_description, :picture, :product_price)
 	end
 end

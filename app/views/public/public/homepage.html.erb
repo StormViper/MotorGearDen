@@ -2,7 +2,7 @@
 <% if user_signed_in? %>
 	<% @user_products.each do |item| %>
 
-		<div align="center"> <img src="<%= item.image_url %>" alt="<%= item.product_name %>"><br /></div>
+		<div align="center"> <%= image_tag p.picture.url, alt: p.product_name %><br /></div>
 		<b>Product name:</b> <%= item.product_name %><br>
 		<b>Product description:</b><br /> <p class="product-description"><%= item.product_description %></p><br>
 		<b>Product price:</b> <%= item.product_price %><br>
@@ -12,3 +12,9 @@
 
 <%= link_to 'Lockpick set', cart_add_item_path(1) if user_signed_in? %><br>
 <%= link_to 'Motorcycle jacket', cart_add_item_path(2) if user_signed_in?%><br>
+
+<% @products.each do |p|%>
+<%= p.product_name %><br>
+<%= image_tag(p.picture.url, alt: p.product_name, size: "450x300") %>
+<%= p.product_id %>
+<% end %>
