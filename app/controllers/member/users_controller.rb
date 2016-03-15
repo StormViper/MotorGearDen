@@ -21,6 +21,7 @@ class Member::UsersController < ApplicationController
 	end
 
 	def destroy
+		@user = User.find(params[:id])
 		@user.destroy!
 		flash[:success] = "Account successfully destroyed :( we hope you come back"
 		redirect_to root_path

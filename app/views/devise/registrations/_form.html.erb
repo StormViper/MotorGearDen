@@ -1,6 +1,11 @@
 <%= form_for(obj, as: obj, url: registration_path(obj)) do |f| %>
 <div class="container" id="user-edit-container" align="center">
   <div class="input-group">
+    <%= f.label :username, id: "user-edit-label" %><br>
+    <%= f.text_field :username, class: "form-control", id: "form-user-edit" %>
+  </div>
+
+  <div class="input-group">
     <%= f.label :email, id: "user-edit-label" %><br>
     <%= f.email_field :email, class: "form-control", id: "form-user-edit" %>
   </div>
