@@ -1,0 +1,32 @@
+<%= form_for obj, url: user_path, html: { method: :put} do |f| %>
+<div class="container" id="user-edit-container" align="center">
+<% obj.errors.full_messages.each do |message| %>
+	<%= message %><br>
+<% end %>
+	<div class="input-group">
+		<%= f.label :email, id: "user-edit-label" %><br>
+		<%= f.email_field :email, class: "form-control", id: "form-user-edit" %>
+	</div>
+
+	<div class="input-group">
+		<%= f.label :password, id: "user-edit-label"  %><br>
+		<%= f.password_field :password, class: "form-control", id: "form-user-edit" %>
+	</div>
+
+	<div class="input-group">
+		<%= f.label "confirm password", id: "user-edit-label"  %><br>
+		<%= f.password_field :password_confirmation, class: "form-control", id: "form-user-edit" %>
+	</div>
+
+	<div class="input-group">
+		<%= f.label :picture, id: "user-edit-label"  %><br>
+		<%= f.file_field :picture, class: "form-control", id: "form-user-edit" %>
+	</div>
+
+	<div class="input-group">
+		<%= f.submit "Save", url: user_path(obj), html: { method: :put}, class: "btn btn-primary"  %>
+<% end %>
+		<%= button_to "Destroy account", { action: "destroy", id: obj.id },
+																			 method: :delete, data: { confirm: "Are you sure you wish to delete your account?", class: "btn btn-danger"} %>
+	</div>
+</div>
