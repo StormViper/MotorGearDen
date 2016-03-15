@@ -1,0 +1,28 @@
+<%= form_for(obj, as: obj, url: registration_path(obj)) do |f| %>
+<div class="container" id="user-edit-container" align="center">
+  <div class="input-group">
+    <%= f.label :email, id: "user-edit-label" %><br>
+    <%= f.email_field :email, class: "form-control", id: "form-user-edit" %>
+  </div>
+
+  <div class="input-group">
+    <%= f.label :password, id: "user-edit-label"  %><br>
+    <%= f.password_field :password, class: "form-control", id: "form-user-edit" %>
+  </div>
+
+  <div class="input-group">
+    <%= f.label "confirm password", id: "user-edit-label"  %><br>
+    <%= f.password_field :password_confirmation, class: "form-control", id: "form-user-edit" %>
+  </div>
+
+  <div class="input-group">
+    <%= f.label :picture, id: "user-edit-label"  %><br>
+    <%= f.file_field :picture, class: "form-control", id: "form-user-edit" %>
+  </div>
+
+  <div class="input-group">
+    <%= f.submit "Create account", class: "btn btn-primary", id: "user-submit"  %>
+   <%= render "devise/shared/links" %>
+  </div>
+</div>
+<% end %>
