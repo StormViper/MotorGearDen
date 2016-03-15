@@ -4,3 +4,7 @@
 	<b>Product description:</b><br /> <p class="product-description"><%= item.product_description %></p><br>
 	<b>Product price:</b> £<%= item.product_price %><br><hr>
 <% end %>
+
+<%= "$#{@total}" %>
+
+<%= link_to "Checkout", new_charge_path %>

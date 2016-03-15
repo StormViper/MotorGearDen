@@ -22,5 +22,6 @@
 .byebug_history
 
 /public/uploads/product/*
+/public/uploads/user/*
 
 README.rdoc
