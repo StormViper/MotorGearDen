@@ -92,8 +92,12 @@ class Cart::CartController < ApplicationController
 			items = Product.where(:product_id => item).first
 			@user_products << items
 		end
+		@total = 0
+		@user_products.each do |p|
+			@total += p.product_price
+		end
 
-		#@total = @user_products[0].product_price + @user_products[1].product_price + @user_products[2].product_price + @user_products[3].product_price + @user_products[4].product_price + @user_products[5].product_price
-					 										 #+ @user_products[6].product_price + @user_products[7].product_price + @user_products[8].product_price + @user_products[9].product_price
+		@cart.total = @total
+		@cart.save
 	end
 end

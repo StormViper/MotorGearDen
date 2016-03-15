@@ -1,1 +1,7 @@
-<h2>Thanks, you paid <strong>$25.00</strong> for a product</h2>
+<h2>Thanks, you paid <strong><%= @total %></strong> for the following products:</h2>
+<% @user_products.each do |item| %>
+	<div align="center"> <%= image_tag item.picture.url, alt: item.product_name if item.picture %><br /></div>
+	<b>Product name:</b> <%= item.product_name %><br>
+	<b>Product description:</b><br /> <p class="product-description"><%= item.product_description %></p><br>
+	<b>Product price:</b> £<%= item.product_price %><br><hr>
+<% end %>
