@@ -22,9 +22,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @cart.slot_id = @slot.id
       @cart.save
       debugger
-      if @user.picture == nil
-        @user.picture = User.first.picture
-      end
 
       redirect_to root_path
      else
