@@ -2,7 +2,7 @@
 <span class="help-block">This page is monitored and logged - only add new products if you have all the correct details. 
 If you are using this page unauthorised, legal action will be taken against you.</span>
 <% @product.errors.full_messages.each do |message| %>
-	<%= message %>
+	<%= message %><br>
 <% end %>
 <%= form_for(@product, url: product_create_path, method: :post, :html => {multipart: true}) do |p|%>
 
@@ -10,7 +10,7 @@ If you are using this page unauthorised, legal action will be taken against you.
 	<%= p.text_field :product_name %><br>
 
 	<%= p.label "**Product Description" %>
-	<%= p.text_field :product_description %><br>
+	<%= p.text_area :product_description %><br>
 
 	<%= p.label "**Product picture" %>
 	<%= p.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %><br>

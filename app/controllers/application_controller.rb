@@ -20,9 +20,11 @@ protected
   def authenticate_admin!
     if user_signed_in?
       if !current_user.admin?
+        flash[:danger] = "You need to be an admin to use this feature!"
         redirect_to root_path
       end
     else
+      flash[:danger] = "You need to be an admin to use this feature!"
       redirect_to root_path
   end
 end

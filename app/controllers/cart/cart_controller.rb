@@ -63,6 +63,8 @@ class Cart::CartController < ApplicationController
 		@slots.save
 		@cart.cart_count = 0
 		@cart.save
+
+		flash[:warning] = "Your cart has been emptied."
 		redirect_to root_path
 	end
 
