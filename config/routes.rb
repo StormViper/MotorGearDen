@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :charges
   devise_for :admins
   devise_for :users,
              :controllers => { :registrations => "users/registrations" }
@@ -60,6 +61,7 @@ Rails.application.routes.draw do
     root 'public#homepage'
   end
 
+
   scope module: 'cart' do
     post '/cart_add_item', to: 'cart#add_item_to_cart'
     get '/empty_cart', to: 'cart#empty_cart'
@@ -71,5 +73,9 @@ Rails.application.routes.draw do
     get '/product/new', to: 'product#new'
     post '/product/create', to: 'product#create'
     get '/product/destroy', to: 'product#destroy'
+  end
+  
+  scope module: 'member' do
+    resources :users, only: [:show, :edit]
   end
 end

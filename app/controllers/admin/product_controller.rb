@@ -21,7 +21,7 @@ class Admin::ProductController < ApplicationController
 	def destroy
 		@product = Product.find(params[:format])
 		@product.destroy!
-		flash[:danger] = "Silently disposed of target"
+		flash[:danger] = "The product #{@product.product_name}, has been silently disposed by Agent #{current_user.username}"
 		redirect_to root_path
 	end
 

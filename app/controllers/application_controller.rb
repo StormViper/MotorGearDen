@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  helper_method :user_is_admin?, :authenticate_admin!, :product_available?
+  helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!
 
 protected
   def configure_permitted_parameters
@@ -20,9 +20,11 @@ protected
   def authenticate_admin!
     if user_signed_in?
       if !current_user.admin?
+        flash[:danger] = "You need to be an admin to use this feature!"
         redirect_to root_path
       end
     else
+      flash[:danger] = "You need to be an admin to use this feature!"
       redirect_to root_path
   end
 end
@@ -34,5 +36,52 @@ def product_available?(product)
   else
     true
   end
+end
+
+def get_user_products!
+      @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
+    @slots = @cart.slots.first
+    @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
+                  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
+    @user_products = []
+    @product = []
+    @slot_list.each do |item|
+    if item.nil?
+        p 'Item empty'
+      else        
+        @product << item
+    end
+    end
+      @product.each do |item|
+      items = Product.where(:product_id => item).first
+      @user_products << items
+    end
+    return @user_products
+end
+
+def get_user_total!
+@total = 0
+    @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
+    @slots = @cart.slots.first
+    @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
+                  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
+
+    @user_products = []
+    @product = []
+    @slot_list.each do |item|
+    if item.nil?
+        p 'Item empty'
+      else        
+        @product << item
+    end
+    end
+      @product.each do |item|
+      items = Product.where(:product_id => item).first
+      @user_products << items
+    end
+    @user_products.each do |p|
+      @total += p.product_price
+    end
+    return @total
 end
 end

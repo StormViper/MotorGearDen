@@ -1,7 +1,7 @@
 <h2>Sign up</h2>
 
 <%= form_for(@user, as: @user, url: registration_path(@user)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= devise_error_messages!("danger") %>
 
   <div class="field">
     <%= f.label :username %><br />
@@ -24,6 +24,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Profile picture" %>
+    <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
   </div>
 
   <div class="actions">

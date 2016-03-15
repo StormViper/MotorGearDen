@@ -1,5 +1,6 @@
 module DeviseHelper
-	def devise_error_messages!
+	def devise_error_messages!(flash)
+		key = flash
 		return "" if resource.errors.empty?
 
 		messages  = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
@@ -8,7 +9,7 @@ module DeviseHelper
 											:resource => resource.class.model_name.human.downcase)
 
 		html = <<-HTML
-		<div id="error-reason">
+		<div class="alert alert-#{key}">
 			<h3 id="error-title">#{sentence}</h3>
 			<h3 id="error-body">#{messages}</h3>
 		</div>

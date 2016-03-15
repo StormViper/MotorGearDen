@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
         where(conditions.to_hash).first
       end
     end
+    mount_uploader :picture, PictureUploader
 end
