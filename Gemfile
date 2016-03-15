@@ -11,6 +11,7 @@ gem "devise"
 gem 'devise_security_extension'
 gem 'angularjs-rails', '~> 1.5'
 gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby'
 
 gem 'carrierwave'
 gem 'mini_magick'
