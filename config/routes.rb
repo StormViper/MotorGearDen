@@ -61,6 +61,10 @@ Rails.application.routes.draw do
     root 'public#homepage'
   end
 
+  scope module: 'member' do
+    get '/user/:id', to: 'member#show'
+  end
+
   scope module: 'cart' do
     post '/cart_add_item', to: 'cart#add_item_to_cart'
     get '/empty_cart', to: 'cart#empty_cart'
