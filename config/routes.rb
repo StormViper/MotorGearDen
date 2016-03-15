@@ -76,6 +76,6 @@ Rails.application.routes.draw do
   end
   
   scope module: 'member' do
-    resources :users, only: [:show, :edit]
+    resources :users, only: [:show, :edit, :update, :destroy]
   end
 end
