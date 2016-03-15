@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
+        <li><%= link_to "Create new product", product_new_path if user_is_admin? %></li>
       </ul>
   <%  #   <form class="navbar-form navbar-left" role="search">
        #<div class="form-group">
@@ -21,6 +21,7 @@
       	<li><%= link_to "Log in", user_session_path if !user_signed_in? %></li>
       	<li><%= link_to "Sign up", new_user_registration_path if !user_signed_in? %></li>
         <% if user_signed_in? %>
+         <li><%= link_to image_tag(current_user.picture, class: "user-picture"), root_path %></li>
       	 <li><%= link_to "Cart items #{current_user.carts.first.cart_count.to_s}", cart_path %></li>
         <% end %>
         <li><%= link_to "Log out", destroy_user_session_path, method: :delete if user_signed_in? %></li>

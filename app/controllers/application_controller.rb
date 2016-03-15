@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  helper_method :user_is_admin?, :authenticate_admin!
+  helper_method :user_is_admin?, :authenticate_admin!, :product_available?
 
 protected
   def configure_permitted_parameters
@@ -20,10 +20,21 @@ protected
   def authenticate_admin!
     if user_signed_in?
       if !current_user.admin?
+        flash[:danger] = "You need to be an admin to use this feature!"
         redirect_to root_path
       end
     else
+      flash[:danger] = "You need to be an admin to use this feature!"
       redirect_to root_path
+  end
+end
+
+def product_available?(product)
+  @product = product
+  if @product.product_price == 0.0
+    false
+  else
+    true
   end
 end
 end

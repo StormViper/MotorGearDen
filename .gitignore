@@ -21,6 +21,6 @@
 /config/database.yml
 .byebug_history
 
-/public/product
+/public/uploads/product/*
 
 README.rdoc

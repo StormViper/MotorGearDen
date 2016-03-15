@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'cart' do
-    get '/cart_add_item', to: 'cart#add_item_to_cart'
+    post '/cart_add_item', to: 'cart#add_item_to_cart'
     get '/empty_cart', to: 'cart#empty_cart'
     get '/destroy_cart', to: 'cart#destroy'
     get '/cart', to: 'cart#show'

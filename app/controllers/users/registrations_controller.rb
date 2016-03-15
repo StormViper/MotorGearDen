@@ -21,6 +21,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @slot.save
       @cart.slot_id = @slot.id
       @cart.save
+      debugger
+      if @user.picture == nil
+        @user.picture = User.first.picture
+      end
 
       redirect_to root_path
      else
@@ -58,7 +62,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit( :email, :password, :password_confirmation, :username )
+    params.require(:user).permit( :email, :password, :password_confirmation, :username, :picture )
   end
 
   # If you have extra params to permit, append them to the sanitizer.
