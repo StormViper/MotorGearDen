@@ -27,8 +27,10 @@ class ChargesController < ApplicationController
 			:currency => 'GBP'
 			)
 
+	clear_cart!
 	rescue Stripe::CardError => e
 		flash[:danger] = e.message
 		redirect_to root_path
 	end
+
 	end
