@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!
+  helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!, :clear_cart!
 
 protected
   def configure_permitted_parameters
@@ -83,5 +83,24 @@ def get_user_total!
       @total += p.product_price
     end
     return @total
+end
+
+def clear_cart!
+  @cart = current_user.carts.first
+  @slots = @cart.slots.first
+  @slots.slot_one = nil
+  @slots.slot_two = nil
+  @slots.slot_three = nil
+  @slots.slot_four = nil
+  @slots.slot_five = nil
+
+  @slots.slot_six = nil
+  @slots.slot_seven = nil
+  @slots.slot_eight = nil
+  @slots.slot_nine = nil
+  @slots.slot_ten = nil
+  @slots.save
+  @cart.cart_count = 0
+  @cart.save
 end
 end
