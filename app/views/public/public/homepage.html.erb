@@ -7,7 +7,7 @@
 	<%= image_tag(p.picture.url, alt: p.product_name, size: "450x300") %><br>
 	<%= p.product_id %><br>
 	<%= p.product_price == 0.0 ? "N/A" : "£#{p.product_price}" %><br>
-	<%= p.product_description %>
+	<%= p.product_description %><br>
 	<%= link_to 'Delete this Product' , product_destroy_path(p), data: {confirm: "Are you sure?"} if user_is_admin? %><br>
 
 	<% if product_available?(p) %>
