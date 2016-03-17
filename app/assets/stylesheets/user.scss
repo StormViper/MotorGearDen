@@ -6,12 +6,27 @@
 	border: 2px solid #33ccff;
 }
 
+#form-user-log {
+	border: 2px solid #33ccff;
+}
+
 #user-edit-container {
 	border: 1px solid #33ccff;
 	padding-bottom: 2%;
 }
 
+#user-log-container {
+	border: 1px solid #33ccff;
+	padding-bottom: 2%;
+}
+
 #user-edit-label {
+	font-weight: bolder;
+	font-size: 1.2em;
+	letter-spacing: -0.1em;
+}
+
+#user-log-label {
 	font-weight: bolder;
 	font-size: 1.2em;
 	letter-spacing: -0.1em;

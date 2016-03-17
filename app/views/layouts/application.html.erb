@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="MGD">
+<html>
 <head>
   <title>Motorgearden</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <script src="../assets/motorgearden.js"></script>
   <%= render 'shared/header' %>
 </head>
-<body ng-controller="motorHome">
+<body>
 <div class="container">
+  <%= render 'shared/sub_header'%>
 	<%= render 'shared/flash' %>
 	<%= yield %>
 </div>
