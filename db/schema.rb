@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317113535) do
+ActiveRecord::Schema.define(version: 20160317150233) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20160317113535) do
     t.datetime "updated_at"
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.string  "name",        null: false
+    t.string  "email",       null: false
+    t.string  "description"
+    t.string  "website"
+    t.integer "brand_id"
+    t.integer "user_id"
+  end
+
   create_table "carts", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
@@ -35,13 +44,6 @@ ActiveRecord::Schema.define(version: 20160317113535) do
     t.integer  "cart_count"
     t.integer  "slot_id"
     t.integer  "total"
-  end
-
-  create_table "manufacturers", force: :cascade do |t|
-    t.string "name",        null: false
-    t.string "email",       null: false
-    t.string "description"
-    t.string "website"
   end
 
   create_table "products", force: :cascade do |t|
@@ -52,7 +54,7 @@ ActiveRecord::Schema.define(version: 20160317113535) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "picture"
-    t.integer  "manufacturer_id"
+    t.integer  "brand_id"
   end
 
   create_table "slots", force: :cascade do |t|
@@ -91,6 +93,8 @@ ActiveRecord::Schema.define(version: 20160317113535) do
     t.integer  "cart_id"
     t.boolean  "admin",                  default: false
     t.string   "picture"
+    t.integer  "brand_id"
+    t.boolean  "is_brand?",              default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
