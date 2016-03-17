@@ -5,24 +5,31 @@ If you are using this page unauthorised, legal action will be taken against you.
 	<%= message %><br>
 <% end %>
 <%= form_for(@product, url: product_create_path, method: :post, :html => {multipart: true}) do |p|%>
-
-	<%= p.label "**Product Name" %>
-	<%= p.text_field :product_name %><br>
-
-	<%= p.label "**Product Description" %>
-	<%= p.text_area :product_description %><br>
-
-	<%= p.label "**Product picture" %>
-	<%= p.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %><br>
-
-	<%= p.label "**Product Price" %>
-	<%= p.text_field :product_price %><br>
-
-	<%= p.label :brand_id %>
-	<%= p.text_field :brand_id %><br>
-	<span class="help-block">Please enter the brand ID</span>
-
-	<%= p.submit %>
-	<span class="help-block">All fields with '**' next to them are required!</span>
-
+<div class="container" id="user-edit-container" align="center">
+	<div class="input-group">
+		<%= p.label "**Product Name", id: "user-edit-label" %><br>
+		<%= p.text_field :product_name, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Product Description", id: "user-edit-label" %><br>
+		<%= p.text_area :product_description, class: "form-control", id: "form-user-edit" %>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Product picture", id: "user-edit-label" %><br>
+		<%= p.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Product Price", id: "user-edit-label" %><br>
+		<%= p.text_field :product_price, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Brand ID", id: "user-edit-label" %><br>
+		<%= p.text_field :brand_id, class: "form-control", id: "form-user-edit" %><br>
+		<span class="help-block">Please enter the brand ID</span>
+	</div>
+<div class="input-group">
+		<%= p.submit "Create product", class: "btn btn-primary" %>
+</div>
+		<span class="help-block">All fields with '**' next to them are required!</span>
+</div>
 <% end %>
