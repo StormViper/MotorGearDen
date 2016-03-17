@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!, :clear_cart!
+  helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!, :clear_cart!,
+                :user_is_brand?
 
 protected
   def configure_permitted_parameters
@@ -102,5 +103,9 @@ def clear_cart!
   @slots.save
   @cart.cart_count = 0
   @cart.save
+end
+
+def user_is_brand?
+  current_user.is_brand? if user_signed_in?
 end
 end
