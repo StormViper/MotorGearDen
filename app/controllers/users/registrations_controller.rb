@@ -21,7 +21,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @slot.save
       @cart.slot_id = @slot.id
       @cart.save
-      debugger
 
       redirect_to root_path
      else
