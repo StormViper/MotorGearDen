@@ -1,5 +1,5 @@
 module DeviseHelper
-	def devise_error_messages!(flash)
+	def devise_error_messages!
 		key = flash
 		return "" if resource.errors.empty?
 
@@ -9,7 +9,7 @@ module DeviseHelper
 											:resource => resource.class.model_name.human.downcase)
 
 		html = <<-HTML
-		<div class="alert alert-#{key}">
+		<div class="alert alert-danger">
 			<h3 id="error-title">#{sentence}</h3>
 			<h3 id="error-body">#{messages}</h3>
 		</div>
