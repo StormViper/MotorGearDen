@@ -4,8 +4,8 @@ class Cart::CartController < ApplicationController
 	def add_item_to_cart
 		redirect_to root_path if !user_signed_in?
 		@product = Product.where(:product_id => params[:format]).first
-		@cart = current_user.carts.first
-		@slots = @cart.slots.first
+		@cart = current_user.cart
+		@slots = @cart.slot.first
 		if @slots.slot_one == nil
 			@slots.slot_one = @product.product_id
 			nil
@@ -62,7 +62,7 @@ class Cart::CartController < ApplicationController
 	def show
 		@user_products = get_user_products!
 		@total = get_user_total!
-		@cart = current_user.carts.first
+		@cart = current_user.cart
 
 		@cart.total = @total
 		@cart.save

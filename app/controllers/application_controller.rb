@@ -40,7 +40,7 @@ end
 
 def get_user_products!
       @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
-    @slots = @cart.slots.first
+    @slots = @cart.slot.first
     @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
                   @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
     @user_products = []
@@ -60,9 +60,9 @@ def get_user_products!
 end
 
 def get_user_total!
-@total = 0
+    @total = 0
     @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
-    @slots = @cart.slots.first
+    @slots = @cart.slot.first
     @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
                   @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
 
@@ -86,8 +86,8 @@ def get_user_total!
 end
 
 def clear_cart!
-  @cart = current_user.carts.first
-  @slots = @cart.slots.first
+  @cart = current_user.cart
+  @slots = @cart.slot.first
   @slots.slot_one = nil
   @slots.slot_two = nil
   @slots.slot_three = nil
