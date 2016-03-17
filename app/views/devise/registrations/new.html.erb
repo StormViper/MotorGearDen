@@ -1,3 +1,7 @@
 <h2>Sign up</h2>
 
+<%  @user.errors.full_messages.each do |msg| %>
+	<%= msg %>
+<% end %>
+
 <%= render 'form', obj: @user %>
