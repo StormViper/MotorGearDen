@@ -3,16 +3,17 @@
 <%= link_to 'Motorcycle jacket', cart_add_item_path(2) if user_signed_in?%><br>
 
 <% @products.each do |p|%>
-	<%= p.product_name %><br>
-	<%= image_tag(p.picture.url, alt: p.product_name, size: "450x300", id: "product-pic") %><br>
-	<%= p.product_id %><br>
-	<%= p.product_price == 0.0 ? "N/A" : "£#{p.product_price}" %><br>
-	<%= p.product_description %><br>
-	<%= link_to 'Delete this Product' , product_destroy_path(p), data: {confirm: "Are you sure?"} if user_is_admin? %><br>
+<ul class="products">
+	<li id="liprod"><%= link_to p.product_name, root_path, id: "product-text" %></li>
+	<li id="liprod"><%= image_tag(p.picture.url, alt: p.product_name, size: "450x300", id: "product-pic") %></li>
+	<li id="liprod"><span id="product-text">Price: <%= p.product_price == 0.0 ? "N/A" : "£#{p.product_price}" %></span></li>
+	<li id="liprod"><span id="product-text">Brand: <%= p.brand.name %></span></li>
 
 	<% if product_available?(p) %>
-		<%= button_to "Add item to cart", cart_add_item_path(p.product_id) if user_signed_in? %><br>
+		<li id="liprod"><%= link_to "Add item to cart", cart_add_item_path(p.product_id), method: :post, id: "product-add" if user_signed_in? %></li>
 	<% else %>
-		<%= button_to "Product not available", cart_add_item_path(p.product_id), :disabled => :true if user_signed_in? %><br>
+		<li id="liprod"><%= link_to "Product not available", cart_add_item_path(p.product_id), :disabled => :true if user_signed_in? %></li>
 	<% end %>
+	<li id="liprod"><div align="right"><%= link_to 'Delete this Product' , product_destroy_path(p), data: {confirm: "Are you sure?"}, id:"delete" if user_is_admin? %></div></li>
+	</ul>
 <% end %>
