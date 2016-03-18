@@ -1,7 +1,5 @@
-<% if @user.picture? %>
+
 	<%= link_to image_tag(@user.picture.url, class: "user-profile-picture"), root_path %><br>
-<% else %>
-<%= link_to image_tag(@imageholder.picture.url, class: "user-profile-picture"), root_path %><br>
-<% end %>
+
 
 Hiya this is <%= @user.username %>'s account!
