@@ -5,10 +5,10 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <%= render 'shared/header' %>
 </head>
 <body>
-<div class="container">
+  <%= render 'shared/header_new' %>
+<div class="container" id="maincontainer">
   <%= render 'shared/sub_header'%>
 	<%= render 'shared/flash' %>
 	<%= yield %>

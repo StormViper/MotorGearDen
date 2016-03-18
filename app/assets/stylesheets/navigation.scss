@@ -1,0 +1,82 @@
+.user-picture {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+body {
+	background-color:  #99ccff;
+}
+
+div#maincontainer {
+	background-color: #d55d5d;
+}
+
+#menu {
+	position: fixed;
+	width: 100%;
+	background-color: #80bfff;
+	border: 0;
+}
+
+#menu-header a {
+	color: black;
+	font-weight: bolder;
+	font-size: 1.75em; 
+	letter-spacing: 0.1em;
+	margin-top: 5px;
+	margin-right: 0;
+}
+
+#menu-header a:hover {
+	color: #262626;
+	font-weight: bolder; 
+	letter-spacing: 0.1em;
+	margin-top: 5px;
+	background-color: #66b3ff;
+	border-radius: 50%;
+}
+
+#menu ul {
+	display: inline-block;
+	list-style-type: none;
+}
+
+#menu li {
+	display: inline-block;
+}
+
+ul#menu-nav-right {
+	text-align: right !important;
+}
+
+ul#menu-nav { 	margin-top: 20px; margin-right: 10px;}
+ul#menu-nav #menu-text-left {
+	font-size: 1.2em;
+	color: black;
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+ul#menu-nav #menu-text-left:hover {
+	background-color: #66b3ff;
+	border-radius: 50%;
+	text-decoration: none;
+}
+
+ul#menu-nav-right {
+	position: absolute;
+	right: 10px;
+	min-width: 918px;
+}
+ul#menu-nav-right #menu-text-right {
+	color: black;
+	margin-right: 10px;
+	font-weight: bold;
+}
+ul#menu-nav-right #menu-text-right:hover {
+	background-color: #66b3ff;
+	border-radius: 50%;
+	text-decoration: none;
+}

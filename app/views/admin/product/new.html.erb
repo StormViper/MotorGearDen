@@ -1,5 +1,5 @@
 <h2>Create a new product</h2>
-<span class="help-block">This page is monitored and logged - only add new products if you have all the correct details. 
+<span class="help-block" id="help">This page is monitored and logged - only add new products if you have all the correct details. 
 If you are using this page unauthorised, legal action will be taken against you.</span>
 <% @product.errors.full_messages.each do |message| %>
 	<%= message %><br>
@@ -25,11 +25,11 @@ If you are using this page unauthorised, legal action will be taken against you.
 	<div class="input-group">
 		<%= p.label "**Brand ID", id: "user-edit-label" %><br>
 		<%= p.text_field :brand_id, class: "form-control", id: "form-user-edit" %><br>
-		<span class="help-block">Please enter the brand ID</span>
+		<span class="help-block" id="help">Please enter the brand ID</span>
 	</div>
 <div class="input-group">
 		<%= p.submit "Create product", class: "btn btn-primary" %>
 </div>
-		<span class="help-block">All fields with '**' next to them are required!</span>
+		<span class="help-block" id="help">All fields with '**' next to them are required!</span>
 </div>
 <% end %>
