@@ -4,7 +4,7 @@
 
 <% @products.each do |p|%>
 	<%= p.product_name %><br>
-	<%= image_tag(p.picture.url, alt: p.product_name, size: "450x300") %><br>
+	<%= image_tag(p.picture.url, alt: p.product_name, size: "450x300", id: "product-pic") %><br>
 	<%= p.product_id %><br>
 	<%= p.product_price == 0.0 ? "N/A" : "£#{p.product_price}" %><br>
 	<%= p.product_description %><br>
