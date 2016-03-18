@@ -1,0 +1,47 @@
+.products {
+	list-style-type: none;
+	display: inline-block;
+	margin-bottom: 15px;
+	border: 3px solid #d04949;
+	border-radius: 2%;
+	padding-right: 15px;
+	padding-bottom: 10px;
+}
+
+ul#liprod {
+		padding-right: 5px;
+}
+
+#product-pic {
+	border-radius: 15%;
+}
+
+#product-text {
+	color: #e6e6e6;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+span#delete {
+	margin-left: 225px;
+	margin-right: 0;
+}
+
+a#delete {
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+} 
+
+a#product-add {
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px;
+	border-radius: 25%;
+	background-color: #99ccff;
+	color: black;
+}
+
+a#product-add:hover {
+	background-color: #66b3ff;
+}
