@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
 
 	def create
 		@user_products = get_user_products!
-		@cart = current_user.carts.first
+		@cart = current_user.cart
 		@total = @cart.total
 		@amount = @cart.total * 100
 
@@ -27,7 +27,8 @@ class ChargesController < ApplicationController
 			:currency => 'GBP'
 			)
 
-	clear_cart!
+		Email.checkout_email(current_user, @user_products).deliver
+		clear_cart!
 	rescue Stripe::CardError => e
 		flash[:danger] = e.message
 		redirect_to root_path
