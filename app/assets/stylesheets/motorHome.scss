@@ -4,7 +4,14 @@
 	margin-top: 55px;
 	width: 100%;
 	height: 240px;
-	background-color:  #99ccff;
+	background: #d04949;
+	border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 8px;
+	-webkit-box-shadow: 1px 2px 1px #b62f2f;
+	-moz-box-shadow: 1px 2px 1px #b62f2f;
+	box-shadow: 1px 2px 1px #b62f2f;
 }
 
 span#help {
@@ -17,4 +24,9 @@ body {
 
 div#maincontainer {
 	background-color: #d55d5d;
+	border: 1px solid #333;
+	-webkit-box-shadow: 0 0 15px 5px #cce6ff;
+					box-shadow: 0 0 15px 5px #cce6ff;
+	/* If we don't agree on black use this color: #cb3434 or #cce6ff*/
+
 }
