@@ -19,6 +19,7 @@
 /tmp
 
 /config/database.yml
+/config/application.yml
 .byebug_history
 
 /public/uploads/product/*

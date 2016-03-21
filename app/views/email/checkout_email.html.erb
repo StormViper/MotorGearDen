@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html style="background-color: #99ccff;">
+	<head>
+		<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	</head>
+
+<body style="margin-left: auto; margin-right: auto; background-color: #d55d5d; width: 75%;">
+	<div align="center">
+		<img src="http://localhost:3000/assets/motobanner-d2fde8a6e30060905a6f72b0c8128d222a7596e690a7a4c648e5e81109bf4600.jpg" style="margin-top: 0% ;width: 75%; height: 240px;" ></img>
+	</div>
+	<div align="center">
+		<h2>Hello <%= @user.username %>!</h2>
+			<p style="font-size: 1.2em;">Thank you for purchasing the following items:</p>
+			<hr><% @user_products.each do |item| %>
+				<div align="center"> <%= image_tag "http://localhost:3000/#{item.picture.url}", alt: item.product_name if item.picture %><br /></div>
+				<b>Product name:</b> <%= item.product_name %><br>
+				<b>Product description:</b><br /> <p class="product-description"><%= item.product_description %></p><br>
+				<b>Product price:</b> £<%= item.product_price %><br><hr>
+			<% end %>
+
+</body>
+
+<footer>
+	<small>Thanks,<br>
+	The MotorGearDen team</small></div>
+</footer>
+</html>

@@ -22,6 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @cart.slot_id = @slot.id
       @cart.save
 
+      Email.registration_email(@user).deliver
       redirect_to root_path
      else
       p "USER FAILED LOGIN: #{@user.username}"

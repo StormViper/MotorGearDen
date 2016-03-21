@@ -40,7 +40,7 @@ def product_available?(product)
 end
 
 def get_user_products!
-      @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
+    @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
     @slots = @cart.slot.first
     @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
                   @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
