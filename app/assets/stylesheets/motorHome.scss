@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Allan:400,700);
 .sub-header {
 	margin-top: 55px;
 	width: 100%;
@@ -28,5 +29,4 @@ div#maincontainer {
 	-webkit-box-shadow: 0 0 15px 5px #cce6ff;
 					box-shadow: 0 0 15px 5px #cce6ff;
 	/* If we don't agree on black use this color: #cb3434 or #cce6ff*/
-
 }
