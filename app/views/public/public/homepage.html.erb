@@ -1,7 +1,4 @@
-<%= link_to 'Empty cart', empty_cart_path if user_signed_in?%><br>
-<%= link_to 'Lockpick set', cart_add_item_path(1) if user_signed_in? %><br>
-<%= link_to 'Motorcycle jacket', cart_add_item_path(2) if user_signed_in?%><br>
-
+<div class="products-home" align="center">
 <% @products.each do |p|%>
 <ul class="products">
 	<li id="liprod"><%= link_to p.product_name, root_path, id: "product-text" %></li>
@@ -17,3 +14,4 @@
 	<li id="liprod"><div align="right"><%= link_to 'Delete this Product' , product_destroy_path(p), data: {confirm: "Are you sure?"}, id:"delete" if user_is_admin? %></div></li>
 	</ul>
 <% end %>
+</div>
