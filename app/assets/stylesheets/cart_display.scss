@@ -9,3 +9,23 @@
 	width: 350px;
 	height: 225px;
 }
+
+.cart-checkout {
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px;
+	border-radius: 25%;
+	background-color: #99ccff;
+	color: black;
+}
+
+.cart-checkout:hover {
+	background-color: #66b3ff;
+	text-decoration: none;
+}
+
+#total-display {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #e6e6e6;
+}
