@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323145131) do
+ActiveRecord::Schema.define(version: 20160323150715) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -122,6 +122,11 @@ ActiveRecord::Schema.define(version: 20160323145131) do
     t.string   "picture"
     t.integer  "brand_id"
     t.boolean  "is_brand?",              default: false
+    t.string   "door_name_number"
+    t.string   "street"
+    t.string   "city"
+    t.string   "borough"
+    t.string   "postcode"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
