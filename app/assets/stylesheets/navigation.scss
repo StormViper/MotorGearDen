@@ -124,7 +124,7 @@ footer ul li {
 }
 
 .dropdown {
-	positon: relative;
+	position: relative;
 	top: 0;
 	display: inline-block;
 	-moz-box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.5);
@@ -136,7 +136,7 @@ footer ul li {
 
 .dropdown-content {
   display: none;
-  position: absolute;
+  position: absolute;	
   background-color: #f9f9f9;
   min-width: 160px;
   font-size: 1.1em;
