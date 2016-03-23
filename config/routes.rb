@@ -62,7 +62,6 @@ Rails.application.routes.draw do
     get '/sitemap', to: 'public#sitemap'
   end
 
-
   scope module: 'cart' do
     post '/cart_add_item', to: 'cart#add_item_to_cart'
     get '/empty_cart', to: 'cart#empty_cart'
@@ -74,6 +73,10 @@ Rails.application.routes.draw do
     get '/product/new', to: 'product#new'
     post '/product/create', to: 'product#create'
     get '/product/destroy', to: 'product#destroy'
+
+    get '/category/new', to: 'category#new'
+    post '/category/create', to: 'category#create'
+    get '/category/destroy', to: 'category#destroy'
   end
   
   scope module: 'member' do
