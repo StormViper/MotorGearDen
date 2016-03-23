@@ -22,6 +22,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @cart.slot_id = @slot.id
       @cart.save
 
+      create_user_detail(@user)
+
       Email.registration_email(@user).deliver
       redirect_to root_path
      else
@@ -60,6 +62,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit( :email, :password, :password_confirmation, :username, :picture )
+  end
+
+  def create_user_detail(user)
+    @user = user
+    @ud = UserDetail.new
+
+    @ud.username = @user.username
+    @ud.email = @user.email
+    @ud.brand_id = @user.brand_id if @user.brand
+    @ud.brand_website = @user.brand.website if @user.brand
+    @ud.user_id = @user.id
+    @ud.save!
+
+    @user.user_detail_id = @ud.id
+    @user.save!
   end
 
   # If you have extra params to permit, append them to the sanitizer.
