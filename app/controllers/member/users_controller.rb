@@ -20,6 +20,18 @@ class Member::UsersController < ApplicationController
 		end
 	end
 
+	def update_address
+		@user = User.find(current_user.id)
+
+		if @user.update(address_params)
+			flash[:success] = "Saved address settings"
+			redirect_to root_path
+		else	
+			flash[:danger] = "Error occured please re-check your input"
+			render 'new'
+		end
+	end
+
 	def destroy
 		@user = User.find(params[:id])
 		@user.destroy!
@@ -31,5 +43,9 @@ private
 
 def user_params
 	params.require(:user).permit(:email, :password, :picture)
+end
+
+def address_params
+	params.require(:user).permit(:door_name_numner, :street, :city, :borough, :postcode)
 end
 end

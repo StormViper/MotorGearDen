@@ -1,0 +1,18 @@
+<h2>Create a new category</h2>
+<span class="help-block" id="help">This page is monitored and logged - only add new category if you have all the correct details. 
+If you are using this page unauthorised, legal action will be taken against you.</span>
+<% @category.errors.full_messages.each do |message| %>
+	<%= message %><br>
+<% end %>
+<%= form_for(@category, url: category_create_path, method: :post, :html => {multipart: true}) do |p|%>
+<div class="container" id="user-edit-container" align="center">
+	<div class="input-group">
+		<%= p.label "** Category Name", id: "user-edit-label" %><br>
+		<%= p.text_field :name, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+<div class="input-group">
+		<%= p.submit "Create category", class: "btn btn-primary" %>
+</div>
+		<span class="help-block" id="help">All fields with '**' next to them are required!</span>
+</div>
+<% end %>
