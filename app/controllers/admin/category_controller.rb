@@ -1,4 +1,5 @@
 class Admin::CategoryController < ApplicationController
+	before_action :authenticate_admin!
 	def new
 		Rails.logger.info "*****The user #{current_user.username} just accessed the create category page is s/he an admin?: #{current_user.admin?}*****"
 		@category = Category.new
