@@ -1,2 +1,17 @@
 <h2>Update account settings</h2>
-<%= render 'form', obj: @user %>
+<div class="jumbotron" id="user">
+	<div class="container" id="user-edit-container" align="center">
+		<div id="user-address" align="left">
+			<div id="side-menu" align="left">
+				<button onclick="userSwitch()" id="user-detail">User details</button><br>
+				<button onclick="addressSwitch()" id="user-detail">Address details</button>
+			</div>
+		</div>
+			<div id="user-form" align="center">
+				<%= render 'user_form', obj: @user %>
+			</div>
+			<div id="address-form" align="center">
+				<%= render 'address_form', obj: @user %>
+		</div>
+	</div>
+</div>

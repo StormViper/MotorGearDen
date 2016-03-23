@@ -1,0 +1,35 @@
+<%= form_for obj, url: update_address_path(obj), html: { method: :get} do |f| %>
+	<% obj.errors.full_messages.each do |message| %>
+		<%= message %><br>
+	<% end %>
+		<div class="input-group">
+			<%= f.label "Door number or name", id: "user-edit-label" %><br>
+			<%= f.text_field :door_name_number, class: "form-control", id: "form-user-edit" %>
+		</div>
+
+		<div class="input-group">
+			<%= f.label :street, id: "user-edit-label"  %><br>
+			<%= f.text_field :street, class: "form-control", id: "form-user-edit" %>
+		</div>
+
+		<div class="input-group">
+			<%= f.label :city, id: "user-edit-label"  %><br>
+			<%= f.text_field :city, class: "form-control", id: "form-user-edit" %>
+		</div>
+
+		<div class="input-group">
+			<%= f.label :borough, id: "user-edit-label"  %><br>
+			<%= f.text_field :borough, class: "form-control", id: "form-user-edit" %>
+		</div>
+
+		<div class="input-group">
+			<%= f.label :postcode, id: "user-edit-label"  %><br>
+			<%= f.text_field :postcode, class: "form-control", id: "form-user-edit" %>
+		</div>
+
+		<div class="input-group">
+			<%= submit_tag "Update address detail", url: update_address_path(obj), html: { method: :get	}, class: "btn btn-primary"  %>
+	<% end %>
+			<%= button_to "Destroy account", { action: "destroy", id: obj.id },
+																				 method: :delete, data: { confirm: "Are you sure you wish to delete your account?", class: "btn btn-danger"} %>
+</div>

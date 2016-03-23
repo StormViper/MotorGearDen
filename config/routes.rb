@@ -81,5 +81,6 @@ Rails.application.routes.draw do
   
   scope module: 'member' do
     resources :users, only: [:show, :edit, :update, :destroy]
+    get '/update_address', to: 'users#update_address'
   end
 end
