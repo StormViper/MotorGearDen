@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317150233) do
+ActiveRecord::Schema.define(version: 20160323150715) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20160317150233) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "affiliates", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_url"
+    t.string   "link_url"
+    t.boolean  "is_enabled?"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "brands", force: :cascade do |t|
@@ -73,6 +82,24 @@ ActiveRecord::Schema.define(version: 20160317150233) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_details", force: :cascade do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "address_line_three"
+    t.string   "address_line_four"
+    t.string   "address_line_five"
+    t.string   "phone"
+    t.boolean  "is_brand?"
+    t.string   "brand_name"
+    t.string   "brand_email"
+    t.string   "brand_website"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -95,6 +122,11 @@ ActiveRecord::Schema.define(version: 20160317150233) do
     t.string   "picture"
     t.integer  "brand_id"
     t.boolean  "is_brand?",              default: false
+    t.string   "door_name_number"
+    t.string   "street"
+    t.string   "city"
+    t.string   "borough"
+    t.string   "postcode"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
