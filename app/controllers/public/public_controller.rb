@@ -18,4 +18,7 @@ class Public::PublicController < ApplicationController
       end
     end
 	end
+
+  def sitemap
+  end
 end

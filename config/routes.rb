@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   #   end
   scope module: 'public' do
     root 'public#homepage'
+    get '/sitemap', to: 'public#sitemap'
   end
 
 
