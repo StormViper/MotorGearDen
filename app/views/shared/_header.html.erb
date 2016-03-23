@@ -13,7 +13,9 @@
   	<button onclick="headerDrop()" class="dropbtn">Admin</button>
   	<div id="head-dropdown" class="dropdown-content">
     	<li><%= link_to "Create new product", product_new_path, id: "menu-text-left" if user_is_admin? %></li>
+    	<div class="seperator"></div>
     	<%= link_to 'Home', root_path %>
+    	<div class="seperator"></div>
     	<%= link_to 'Home', root_path %>
   </div>
 </div>
