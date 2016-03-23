@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323082511) do
+ActiveRecord::Schema.define(version: 20160323145131) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20160323082511) do
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "affiliates", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_url"
+    t.string   "link_url"
+    t.boolean  "is_enabled?"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "brands", force: :cascade do |t|
