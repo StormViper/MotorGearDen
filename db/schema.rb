@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317150233) do
+ActiveRecord::Schema.define(version: 20160323082511) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -71,6 +71,24 @@ ActiveRecord::Schema.define(version: 20160317150233) do
     t.integer  "cart_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_details", force: :cascade do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "address_line_three"
+    t.string   "address_line_four"
+    t.string   "address_line_five"
+    t.string   "phone"
+    t.boolean  "is_brand?"
+    t.string   "brand_name"
+    t.string   "brand_email"
+    t.string   "brand_website"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
