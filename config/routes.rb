@@ -77,6 +77,10 @@ Rails.application.routes.draw do
     get '/category/new', to: 'category#new'
     post '/category/create', to: 'category#create'
     get '/category/destroy', to: 'category#destroy'
+
+    get '/affiliate/new', to: 'affiliate#new'
+    post 'affiliate/create', to: 'affiliate#create'
+    get '/affiliate/destroy', to: 'affiliate#destroy'
   end
   
   scope module: 'member' do

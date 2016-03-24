@@ -1,4 +1,5 @@
 class Member::UsersController < ApplicationController
+	before_action :authenticate_user!
 	def show
 		@user = User.find(params[:id])
 		@imageholder = User.where(:email => "adam3692@image.com").first
@@ -6,6 +7,10 @@ class Member::UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
+		if current_user != @user && !current_user.admin?
+			render 'show'
+			flash[:warning] = "You can not change another users account"
+		end
 	end
 
 	def update
@@ -46,6 +51,6 @@ def user_params
 end
 
 def address_params
-	params.require(:user).permit(:door_name_numner, :street, :city, :borough, :postcode)
+	params.require(:user).permit(:door_name_number, :street, :city, :borough, :postcode)
 end
 end
