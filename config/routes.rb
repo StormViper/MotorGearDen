@@ -81,6 +81,10 @@ Rails.application.routes.draw do
     get '/affiliate/new', to: 'affiliate#new'
     post 'affiliate/create', to: 'affiliate#create'
     get '/affiliate/destroy', to: 'affiliate#destroy'
+
+    get '/brand/new', to: 'brand#new'
+    post '/brand/create', to: 'brand#create'
+    get '/brand/destroy', to: 'brand#destroy'
   end
   
   scope module: 'member' do
