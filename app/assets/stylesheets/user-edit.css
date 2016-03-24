@@ -1,5 +1,4 @@
 div#side-menu {
-	border: 2px solid #80bfff;
 	height: 90px;
 	width: 150px;
 	display: inline-block;
@@ -32,7 +31,6 @@ div#user-form	 {
 	display: inline-block;
 	margin-right: auto;
 	margin-left: auto;
-	display: none;
 }
 
 .hide {
