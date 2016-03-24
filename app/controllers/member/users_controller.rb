@@ -46,6 +46,6 @@ def user_params
 end
 
 def address_params
-	params.require(:user).permit(:door_name_numner, :street, :city, :borough, :postcode)
+	params.require(:user).permit(:door_name_number, :street, :city, :borough, :postcode)
 end
 end
