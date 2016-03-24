@@ -32,8 +32,8 @@
 
 			<li><%= link_to "Cart items #{current_user.cart.cart_count.to_s}", cart_path, id: "menu-text-right" %></li>
 			<div class="dropdown">
-  			<button onclick="headerDrop()" class="dropbtn">My profile</button>
-  			<div id="head-dropdown" class="dropdown-content">
+  			<button onclick="uheadDrop()" class="udropbtn">My profile</button>
+  			<div id="uhead-dropdown" class="userdrop-content">
     			<li><%= link_to "My Profile", user_path(current_user), id: "menu-text-left" if user_signed_in? %></li>
     		<div class="seperator"></div>
     			<li><%= link_to 'Edit my profile', edit_user_path(current_user.id) if user_signed_in? %></li>
