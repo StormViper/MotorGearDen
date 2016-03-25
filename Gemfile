@@ -20,6 +20,7 @@ gem 'fog'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
+gem 'will_paginate', '~> 3.0.6'
 
 gem 'rails', '4.2.5'
 gem 'browser'

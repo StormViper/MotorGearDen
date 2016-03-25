@@ -5,6 +5,15 @@ class Admin::BrandController < ApplicationController
 		@brand = Brand.new
 	end
 
+	def menu
+		@brands = Brand.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+		@brand = Brand.new
+	end
+
+	def edit
+		@brand = Brand.find(params[:format])
+	end
+
 	def create
 		@brand = Brand.new(brand_params)
 		@last_brand = Brand.last
