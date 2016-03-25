@@ -1,0 +1,34 @@
+<h2>Create a new brand</h2>
+<span class="help-block" id="help">This page is monitored and logged - only add new brands if you have all the correct details. 
+If you are using this page unauthorised, legal action will be taken against you.</span>
+<% @brand.errors.full_messages.each do |message| %>
+	<%= message %><br>
+<% end %>
+<%= form_for(@brand, url: brand_create_path, method: :post, :html => {multipart: true}) do |p|%>
+<div class="container" id="user-edit-container" align="center">
+	<div class="input-group">
+		<%= p.label "**Brand Name", id: "user-edit-label" %><br>
+		<%= p.text_field :name, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Brand email", id: "user-edit-label" %><br>
+		<%= p.email_field :email, class: "form-control", id: "form-user-edit" %>
+	</div>
+	<div class="input-group">
+		<%= p.label "Description", id: "user-edit-label" %><br>
+		<%= p.text_area :description, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "Website", id: "user-edit-label" %><br>
+		<%= p.text_field :website, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "User ID", id: "user-edit-label" %><br>
+		<%= p.text_field :user_id, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+<div class="input-group">
+		<%= p.submit "Create brand", class: "btn btn-primary" %>
+</div>
+		<span class="help-block" id="help">All fields with '**' next to them are required!</span>
+</div>
+<% end %>
