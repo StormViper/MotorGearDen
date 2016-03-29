@@ -28,6 +28,12 @@ class ChargesController < ApplicationController
 			)
 
 		Email.checkout_email(current_user, @user_products).deliver
+
+		@brands = get_brands!(current_user, @user_products)
+		@brands.each do |brand|
+			Email.checkout_notify_brand_email(brand, @user_products).deliver_now
+		end
+
 		clear_cart!
 	rescue Stripe::CardError => e
 		flash[:danger] = e.message
