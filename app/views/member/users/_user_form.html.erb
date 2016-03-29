@@ -1,7 +1,16 @@
+<h2 id="menu-header">My profile details</h2>
 <%= form_for obj, url: user_path, html: { method: :put} do |f| %>
 	<% obj.errors.full_messages.each do |message| %>
 		<%= message %><br>
 	<% end %>
+		<div class="input-group">
+			<%= f.label :first_name, id: "user-edit-label" %><br>
+			<%= f.text_field :first_name, class: "form-control", id: "form-user-edit" %>
+		</div>
+		<div class="input-group">
+			<%= f.label :last_name, id: "user-edit-label" %><br>
+			<%= f.text_field :last_name, class: "form-control", id: "form-user-edit" %>
+		</div>
 		<div class="input-group">
 			<%= f.label :email, id: "user-edit-label" %><br>
 			<%= f.email_field :email, class: "form-control", id: "form-user-edit" %>

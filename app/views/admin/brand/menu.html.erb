@@ -20,9 +20,9 @@
 				<% end %>
 <ul class="list-group" id="brand-list">
 				<% @brands.each do |b| %>
-					<li class="list-group-item" id="brand-list-item"><%= link_to "ID: #{b.id} | #{b.name}", brand_edit_path(b.id) %></li>
+					<li class="list-group-item" id="brand-list-item"><%= link_to "ID: #{b.id} | #{b.name}", brand_edit_path(b.id), remote: :true, id: "brand-edit-link" %></li>
 				<% end %>
-			<%= will_paginate @brands %>
 </ul>
+<div id="edit-form"></div>
 		</div>
 </div>

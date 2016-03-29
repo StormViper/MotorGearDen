@@ -5,6 +5,8 @@ task :update_details => :environment do
 
 		@ud.username = u.username
 		@ud.email = u.email
+		@ud.first_name = u.first_name
+		@ud.last_name = u.last_name
 
 		@ud.address_line_one = u.door_name_number
 		@ud.address_line_two = u.street
