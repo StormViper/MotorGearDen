@@ -1,0 +1,34 @@
+<span class="help-block" id="help">This page is monitored and logged - only add new brands if you have all the correct details. 
+If you are using this page unauthorised, legal action will be taken against you.</span>
+<% obj.errors.full_messages.each do |message| %>
+	<%= message %><br>
+<% end %>
+<%= form_for(obj, url: brand_update_path, remote: true, method: :post, :html => {multipart: true}) do |p|%>
+<div class="container" id="user-edit-container" align="center">
+	<div class="input-group">
+		<%= p.label "**Brand Name", id: "user-edit-label" %><br>
+		<%= p.text_field :name, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Brand email", id: "user-edit-label" %><br>
+		<%= p.email_field :email, class: "form-control", id: "form-user-edit" %>
+	</div>
+	<div class="input-group">
+		<%= p.label "Description", id: "user-edit-label" %><br>
+		<%= p.text_area :description, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "Website", id: "user-edit-label" %><br>
+		<%= p.text_field :website, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "User ID", id: "user-edit-label" %><br>
+		<%= p.text_field :user_id, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+<div class="input-group">
+		<%= p.submit "Save brand", class: "btn btn-primary", id: "brand-submit" %>
+		<button class="btn btn-primary" id="brand-close">Close this form</button>
+</div>
+		<span class="help-block" id="help">All fields with '**' next to them are required!</span>
+</div>
+<% end %>

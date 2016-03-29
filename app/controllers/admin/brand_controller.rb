@@ -6,7 +6,7 @@ class Admin::BrandController < ApplicationController
 	end
 
 	def menu
-		@brands = Brand.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+		@brands = Brand.search(params[:search])
 		@brand = Brand.new
 	end
 
@@ -27,7 +27,7 @@ class Admin::BrandController < ApplicationController
 				user.save!
 				@brand.save!
 			end
-			redirect_to root_path
+			redirect_to brand_menu_path
 		else
 			flash[:danger] = "Failed to create brand!"
 			render 'new'
@@ -35,6 +35,14 @@ class Admin::BrandController < ApplicationController
 	end
 
 	def update
+		@brand = Brand.where(email: params[:brand][:email]).first
+		if @brand.update(brand_params)
+			flash[:success] = "Saved brand settings"
+			redirect_to brand_menu_path
+		else
+			flash[:danger] = "Error occured please check settings"
+			redirect_to brand_menu_path
+		end
 	end
 
 	def destroy

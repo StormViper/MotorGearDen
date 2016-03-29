@@ -87,6 +87,7 @@ Rails.application.routes.draw do
     get '/brand/destroy', to: 'brand#destroy'
     get '/brand/menu', to: 'brand#menu'
     get '/brand/edit', to: 'brand#edit'
+    post '/brand/update', to: 'brand#update'
   end
   
   scope module: 'member' do
