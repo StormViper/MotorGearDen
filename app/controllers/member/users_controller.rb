@@ -7,6 +7,7 @@ class Member::UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
+		@details = UserDetail.where(user_id: @user.id).first
 		if current_user != @user && !current_user.admin?
 			render 'show'
 			flash[:warning] = "You can not change another users account"
@@ -47,7 +48,7 @@ class Member::UsersController < ApplicationController
 private
 
 def user_params
-	params.require(:user).permit(:email, :password, :picture)
+	params.require(:user).permit(:email, :password, :picture, :first_name, :last_name)
 end
 
 def address_params

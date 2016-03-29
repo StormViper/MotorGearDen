@@ -10,15 +10,15 @@
 		</ul>
 <% if user_is_admin? %>
 	<div class="dropdown">
-  	<button onclick="headerDrop()" class="dropbtn">Admin</button>
+  	<button onclick="headerDrop()" class="dropbtn">Create</button>
   	<div id="head-dropdown" class="dropdown-content">
-    	<li><%= link_to "Create new product", product_new_path, id: "menu-text-left" if user_is_admin? %></li>
+    	<%= link_to "Create new product", product_new_path, id: "menu-text-left" if user_is_admin? %>
     	<div class="seperator"></div>
-    	<li><%= link_to 'Create new category', category_new_path, id: "menu-text-left" if user_is_admin? %></li>
+    	<%= link_to 'Create new category', category_new_path, id: "menu-text-left" if user_is_admin? %>
     	<div class="seperator"></div>
-    	<li><%= link_to 'Create new affiliate', affiliate_new_path, id: "menu-text-left" if user_is_admin? %></li>
+    	<%= link_to 'Create new affiliate', affiliate_new_path, id: "menu-text-left" if user_is_admin? %>
     	<div class="seperator"></div>
-    	<li><%= link_to 'Create new brand', brand_new_path, id: "menu-text-left" if user_is_admin?%>
+    	<%= link_to 'Brand menu', brand_menu_path, id: "menu-text-left" if user_is_admin?%>
   </div>
 </div>
 <% end %>
@@ -36,9 +36,9 @@
 			<div class="dropdown">
   			<button onclick="uheadDrop()" class="udropbtn">My profile</button>
   			<div id="uhead-dropdown" class="userdrop-content">
-    			<li><%= link_to "My Profile", user_path(current_user) if user_signed_in? %></li>
+    			<%= link_to "My Profile", user_path(current_user) if user_signed_in? %>
     		<div class="seperator"></div>
-    			<li><%= link_to 'Edit my profile', edit_user_path(current_user.id) if user_signed_in? %></li>
+    			<%= link_to 'Edit my profile', edit_user_path(current_user.id) if user_signed_in? %>
     		<div class="seperator"></div>
     			<%= link_to 'Home', root_path %>
   		</div>

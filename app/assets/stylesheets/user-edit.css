@@ -19,7 +19,9 @@ div#user-address {
 }
 
 div#address-form {
-	position: relative;	
+	position: absolute;	
+	top: 40%;
+	right: 45%;
 	display: inline-block;
 	margin-right: auto;
 	margin-left: auto;
@@ -27,12 +29,45 @@ div#address-form {
 }
 
 div#user-form	 {
-	position: relative;	
+	position: absolute;	
+	top: 35%;
+	right: 45%;
 	display: inline-block;
 	margin-right: auto;
 	margin-left: auto;
+	display: none;
+}
+
+div#details-form	 {
+	position: absolute;	
+	top: 45%;
+	right: 45%;
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
+
 }
 
 .hide {
 	display: none;
+}
+
+div#details {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul#details-list {
+	list-style: none;
+	display: inline-block;
+}
+
+li#detail-list-item {
+	color: white;
+	margin-bottom: -20px;
+}
+
+li p {
+	display: inline-block;
+	font-weight: bold !important;
 }
