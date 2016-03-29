@@ -1,9 +1,17 @@
 function userSwitch() {
 	$('#user-form').toggle();
 	$('#address-form').hide();
+	$('#details-form').hide();
 };
 
 function addressSwitch() {
 	$('#address-form').toggle();
 	$('#user-form').hide();
+	$('#details-form').hide();
 };
+
+function detailsSwitch(){
+	$('#details-form').show();
+	$('#address-form').hide();
+	$('#user-form').hide();
+}
