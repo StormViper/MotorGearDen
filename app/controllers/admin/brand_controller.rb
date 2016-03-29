@@ -35,7 +35,7 @@ class Admin::BrandController < ApplicationController
 	end
 
 	def update
-		@brand = Brand.where(email: params[:brand][:email]).first
+		@brand = Brand.where(user_id: params[:brand][:user_id]).first
 		if @brand.update(brand_params)
 			flash[:success] = "Saved brand settings"
 			redirect_to brand_menu_path

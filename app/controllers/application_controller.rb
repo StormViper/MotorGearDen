@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
   helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!, :clear_cart!,
-                :user_is_brand?
+                :user_is_brand?, :get_brands!
 
 protected
   def configure_permitted_parameters
@@ -107,5 +107,26 @@ end
 
 def user_is_brand?
   current_user.is_brand? if user_signed_in?
+end
+
+def get_brands!(user, user_products)
+    @user = user
+    @cart = Cart.where(:user_id => @user.id).first
+    @slots = @cart.slot.first
+    @user_products = user_products
+      @products = []
+      @user_products.each do |item|
+        if item.nil?
+        else
+          @products << item
+        end
+      end
+    @brands = []
+    
+    @user_products.each do |p|
+      @brands << p.brand
+    end
+    count = 0
+    @brands = @brands.uniq
 end
 end
