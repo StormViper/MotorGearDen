@@ -153,9 +153,13 @@ def get_total!(sold)
   return @total.to_f
 end
 
-def get_total_after!(total)
-  @total_after = total
-  @total_after = @total * 0.1
-  return @total_after
+def get_total_after!(total, brand)
+  @percentage = "0.#{@brand.percentage}".to_f
+  @brand = brand
+  @total_before = total
+  @commission = @total_before * @percentage
+  @total_after = @total_before - @commission 
+  details = {"total_after" => @total_after, "commission" => @commission}
+  return details
 end
 end
