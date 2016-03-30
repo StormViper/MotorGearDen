@@ -24,6 +24,9 @@ task :update_details => :environment do
 		@ud.brand_name = u.brand.name if u.brand
 		@ud.brand_email = u.brand.email if u.brand
 		@ud.brand_website = u.brand.website if u.brand
+	if u.door_name_number && u.street && u.city && u.borough && u.postcode
+		@ud.address = @ud.address_line_one + ' ' + @ud.address_line_two + ' ' + @ud.address_line_three + ' ' + @ud.address_line_four + ' ' + @ud.address_line_five
+	end
 		@ud.save!
 	end
 
