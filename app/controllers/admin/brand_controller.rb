@@ -5,6 +5,11 @@ class Admin::BrandController < ApplicationController
 		@brand = Brand.new
 	end
 
+	def show
+		@brand = Brand.find(params[:id])
+		@sold = PaidItem.where("brand_name LIKE ? AND brand_id LIKE ?", @brand.name, @brand.id)
+	end
+
 	def menu
 		@brands = Brand.search(params[:search])
 		@brand = Brand.new

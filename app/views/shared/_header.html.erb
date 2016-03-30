@@ -6,7 +6,7 @@
 
 	<div id="menu-collapse">
 		<ul id="menu-nav">
-			<li><%= link_to "#{current_user.brand.name}'s brand details", root_path, id: "menu-text-left" if user_is_brand? %></li>
+			<li><%= link_to "#{current_user.brand.name}'s brand details", brand_path(current_user.brand), id: "menu-text-left" if user_is_brand? %></li>
 		</ul>
 <% if user_is_admin? %>
 	<div class="dropdown">
