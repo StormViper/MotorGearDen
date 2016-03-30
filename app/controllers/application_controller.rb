@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
   helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!, :clear_cart!,
-                :user_is_brand?, :get_brands!
+                :user_is_brand?, :get_brands!, :authenticate_brand!, :get_total!, :get_total_after!
 
 protected
   def configure_permitted_parameters
@@ -127,5 +127,39 @@ def get_brands!(user, user_products)
     end
     @brands = @brands.uniq
     return @brands
+end
+
+def authenticate_brand!
+    if user_signed_in?
+      if !current_user.is_brand?
+        flash[:danger] = "You need to be a brand owner to use this feature!"
+        redirect_to root_path
+      end
+    else
+      flash[:danger] = "You need to be a brand owner to use this feature!"
+      redirect_to root_path
+  end
+end
+
+def get_total!(sold)
+  @total_numbers = []
+  @total = 0
+  sold.each do |item|
+    @total_numbers << item.product_price
+  end
+  @total_numbers.each do |num|
+    @total += num
+  end
+  return @total.to_f
+end
+
+def get_total_after!(total, brand)
+  @percentage = "0.#{@brand.percentage}".to_f
+  @brand = brand
+  @total_before = total
+  @commission = @total_before * @percentage
+  @total_after = @total_before - @commission 
+  details = {"total_after" => @total_after, "commission" => @commission}
+  return details
 end
 end

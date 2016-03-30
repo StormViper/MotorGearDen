@@ -5,16 +5,20 @@ Hello <%= @brand.name %>
     <td id="brand-detail-item">Product name</td>
     <td id="brand-detail-item">Product price</td> 
     <td id="brand-detail-item">Total</td>
-    <td id="brand-detail-item">Total after %</td>
+    <td id="brand-detail-item">Total after commission</td>
+    <td id="brand-detail-item">My commission</td>
+  </tr>
+  <tr id="brand-details">
+    <td id="brand-detail-item"></td>
+    <td id="brand-detail-item"></td>
+    <td id="brand-detail-item">£<%= @total %></td>
+    <td id="brand-detail-item">£<%= @details["total_after"] %></td>
+    <td id="brand-detail-item">£<%= @details["commission"] %></td>
   </tr>
   <% @sold.each do |item| %>
   <tr id="brand-details">
     <td id="brand-detail-item"><%= item.product_name %></td>
-    <td id="brand-detail-item"><%= item.product_price %></td> 
-    <td id="brand-detail-item"><%= "method for total" %></td>
-    <td id="brand-detail-item"><%= "method for after total" %></td>
+    <td id="brand-detail-item">£<%= item.product_price.to_f %></td> 
   </tr>
   <% end %>
 </table>
-
-<%= console %>

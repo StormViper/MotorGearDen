@@ -25,6 +25,11 @@ If you are using this page unauthorised, legal action will be taken against you.
 		<%= p.label "User ID", id: "user-edit-label" %><br>
 		<%= p.text_field :user_id, class: "form-control", id: "form-user-edit" %><br>
 	</div>
+	<div class="input-group">
+		<%= p.label "Percentage", id: "user-edit-label" %><br>
+		<%= p.text_field :percentage, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+		<span class="help-block" id="help">Please make sure you do the percentages as floats, for example 10% will be 0.1 and 1% will be 0.01.</span>
 <div class="input-group">
 		<%= p.submit "Save brand", class: "btn btn-primary", id: "brand-submit" %>
 		<button class="btn btn-primary" id="brand-close">Close this form</button>
