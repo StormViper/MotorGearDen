@@ -10,11 +10,15 @@ Hello <%= @brand.name %>
   <% @sold.each do |item| %>
   <tr id="brand-details">
     <td id="brand-detail-item"><%= item.product_name %></td>
-    <td id="brand-detail-item"><%= item.product_price %></td> 
+    <td id="brand-detail-item"><%= item.product_price.to_f %></td> 
     <td id="brand-detail-item"><%= "method for total" %></td>
     <td id="brand-detail-item"><%= "method for after total" %></td>
   </tr>
   <% end %>
+  <tr id="brand-details">
+    <td id="brand-detail-item"></td>
+    <td id="brand-detail-item"></td>
+    <td id="brand-detail-item">£<%= @total %></td>
+    <td id="brand-detail-item">£<%= @total_after %></td>
+  </tr>
 </table>
-
-<%= console %>
