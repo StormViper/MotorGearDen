@@ -88,6 +88,7 @@ Rails.application.routes.draw do
     get '/brand/menu', to: 'brand#menu'
     get '/brand/edit', to: 'brand#edit'
     post '/brand/update', to: 'brand#update'
+    resources :brand, only: [:show]
   end
   
   scope module: 'member' do

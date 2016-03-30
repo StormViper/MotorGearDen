@@ -1,0 +1,20 @@
+Hello <%= @brand.name %>
+
+<table id="brand-table" style="width:100%">
+  <tr id="brand-headers">
+    <td id="brand-detail-item">Product name</td>
+    <td id="brand-detail-item">Product price</td> 
+    <td id="brand-detail-item">Total</td>
+    <td id="brand-detail-item">Total after %</td>
+  </tr>
+  <% @sold.each do |item| %>
+  <tr id="brand-details">
+    <td id="brand-detail-item"><%= item.product_name %></td>
+    <td id="brand-detail-item"><%= item.product_price %></td> 
+    <td id="brand-detail-item"><%= "method for total" %></td>
+    <td id="brand-detail-item"><%= "method for after total" %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= console %>
