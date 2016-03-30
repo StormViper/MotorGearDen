@@ -34,6 +34,9 @@ class ChargesController < ApplicationController
 			Email.checkout_notify_brand_email(brand, @user_products).deliver_now
 		end
 
+		@user_products.each do |item|
+			PaidItem.create( :brand_name => item.brand.name, :product_name => item.product_name, :brand_id => item.brand.id, :product_price => item.product_price, :product_id => item.id)
+		end
 		clear_cart!
 	rescue Stripe::CardError => e
 		flash[:danger] = e.message
