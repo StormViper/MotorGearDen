@@ -126,5 +126,6 @@ def get_brands!(user, user_products)
       @brands << p.brand
     end
     @brands = @brands.uniq
+    return @brands
 end
 end
