@@ -122,11 +122,9 @@ def get_brands!(user, user_products)
         end
       end
     @brands = []
-    
     @user_products.each do |p|
       @brands << p.brand
     end
-    count = 0
     @brands = @brands.uniq
 end
 end
