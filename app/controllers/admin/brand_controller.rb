@@ -10,7 +10,7 @@ class Admin::BrandController < ApplicationController
 		@brand = Brand.find(params[:id])
 		@sold = PaidItem.where("brand_name LIKE ? AND brand_id LIKE ?", @brand.name, @brand.id)
 		@total = get_total!(@sold)
-		@total_after = get_total_after!(@total)
+		@details = get_total_after!(@total, @brand)
 	end
 
 	def menu
@@ -62,6 +62,6 @@ class Admin::BrandController < ApplicationController
 
 private
 	def brand_params
-		params.require(:brand).permit(:name, :email, :description, :website, :brand_id, :user_id)
+		params.require(:brand).permit(:name, :email, :description, :website, :brand_id, :user_id, :percentage)
 	end
 end
