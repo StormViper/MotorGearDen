@@ -6,21 +6,31 @@ div#side-line {
 }
 
 table#brand-table {
-	border: 1px solid white;
+	border: 3px solid #4da6ff;
 }
 
 tr#brand-headers {
-	border: 1px solid white;
+	border: 3px solid #4da6ff;
 	font-weight: bold;
 }
 
 tr#brand-details {
-	border: 1px solid white;
+	border: 3px solid #4da6ff;
 }
 
 td#brand-detail-item {
-	background-color: lightgrey;
-	border-left: 1px solid white;
-	border-right: 1px solid white;
+	background-color: #80bfff;
+	border-left: 3px solid #4da6ff;
+	border-right: 3px solid #4da6ff;
 	font-size: 1.2em;
+	-webkit-box-shadow: 6px 8px 6px 0px rgba(0,0,0, 0.80);
+	-moz-box-shadow: 6px 8px 6px 0px rgba(0,0,0, 0.80);
+	box-shadow: 6px 8px 6px 0px rgba(0,0,0,0.80);
+	z-index: 999999;
+	border: 0;
+}
+
+h2#brand-header {
+	font-weight: bold;
+	text-decoration: underline;
 }
