@@ -1,5 +1,6 @@
 class Admin::BrandController < ApplicationController
-	before_action :authenticate_admin!
+	before_action :authenticate_admin!, except: [:show]
+	before_action :authenticate_brand!, only: [:show]
 	def new
 		Rails.logger.info "*****The user #{current_user.username} just accessed the create brand page is s/he an admin?: #{current_user.admin?}*****"
 		@brand = Brand.new
@@ -8,6 +9,8 @@ class Admin::BrandController < ApplicationController
 	def show
 		@brand = Brand.find(params[:id])
 		@sold = PaidItem.where("brand_name LIKE ? AND brand_id LIKE ?", @brand.name, @brand.id)
+		@total = get_total!(@sold)
+		@total_after = get_total_after!(@total)
 	end
 
 	def menu
