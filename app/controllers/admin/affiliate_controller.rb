@@ -49,6 +49,10 @@ class Admin::AffiliateController < ApplicationController
 	end
 
 	def destroy
+		@affiliate = Affiliate.find(params[:format])
+		@affiliate.destroy!
+		flash[:danger] = "#{@affiliate.name} has been destroyed by agent #{current_user.username}"
+		redirect_to root_path
 	end
 
 private

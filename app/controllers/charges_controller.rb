@@ -3,7 +3,7 @@ class ChargesController < ApplicationController
 	def new
 		@cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
 		@user_products = UserManager.get_user_products!(current_user.id)
-		@total = get_user_total!
+		@total = UserManager.get_user_total!(current_user)
 
 		@cart.total = @total
 		@cart.save!
@@ -29,7 +29,7 @@ class ChargesController < ApplicationController
 
 		Email.checkout_email(current_user, @user_products).deliver
 
-		@brands = get_brands!(current_user, @user_products)
+		@brands = BrandManager.get_brands!(current_user, @user_products)
 		@brands.each do |brand|
 			Email.checkout_notify_brand_email(brand, @user_products).deliver_now
 		end

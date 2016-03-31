@@ -6,19 +6,19 @@
 
 	<div id="menu-collapse">
 		<ul id="menu-nav">
-			<li><%= link_to "#{current_user.brand.name}'s brand details", brand_path(current_user.brand), id: "menu-text-left" if user_is_brand? %></li>
+			<li><%= link_to "#{current_user.brand.name}'s brand details", brand_path(current_user.brand), id: "menu-text-left" if UserManager.user_is_brand?(current_user) %></li>
 		</ul>
-<% if user_is_admin? %>
+<% if UserManager.user_is_admin?(current_user) %>
 	<div class="dropdown">
   	<button onclick="headerDrop()" class="dropbtn">Create</button>
   	<div id="head-dropdown" class="dropdown-content">
-    	<%= link_to "Create new product", product_new_path, id: "menu-text-left" if user_is_admin? %>
+    	<%= link_to "Create new product", product_new_path, id: "menu-text-left" if UserManager.user_is_admin?(current_user) %>
     	<div class="seperator"></div>
-    	<%= link_to 'Create new category', category_new_path, id: "menu-text-left" if user_is_admin? %>
+    	<%= link_to 'Create new category', category_new_path, id: "menu-text-left" if UserManager.user_is_admin?(current_user) %>
     	<div class="seperator"></div>
-    	<%= link_to 'Affiliate menu', affiliate_menu_path, id: "menu-text-left" if user_is_admin? %>
+    	<%= link_to 'Affiliate menu', affiliate_menu_path, id: "menu-text-left" if UserManager.user_is_admin?(current_user) %>
     	<div class="seperator"></div>
-    	<%= link_to 'Brand menu', brand_menu_path, id: "menu-text-left" if user_is_admin?%>
+    	<%= link_to 'Brand menu', brand_menu_path, id: "menu-text-left" if UserManager.user_is_admin?(current_user) %>
   </div>
 </div>
 <% end %>
@@ -45,7 +45,7 @@
 		</div>
 		<% end %>
 			<li><%= link_to "Log out", destroy_user_session_path, method: :delete, id: "menu-text-right" if user_signed_in? %></li>
-			<li><a><%= link_to "Your an admin Harry!", root_path, id: "menu-text-right"  if user_is_admin?%></a></li>
+			<li><a><%= link_to "Your an admin Harry!", root_path, id: "menu-text-right"  if UserManager.user_is_admin?(current_user) %></a></li>
 			</ul>
 		</div>
 	</div>
