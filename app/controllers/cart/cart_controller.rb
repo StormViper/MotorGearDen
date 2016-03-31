@@ -47,7 +47,7 @@ class Cart::CartController < ApplicationController
 
 
 	def empty_cart
-		clear_cart!
+		CartManager.clear_cart!(current_user)
 
 		flash[:warning] = "Your cart has been emptied."
 		redirect_to root_path

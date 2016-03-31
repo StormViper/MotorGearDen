@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  helper_method :authenticate_admin!, :product_available?, :clear_cart!,
-                :authenticate_brand!, :get_total!, :get_total_after!
+  helper_method :authenticate_admin!, :product_available?, :authenticate_brand!
+
   include BrandManager
   include UserManager
+  include CartManager
 protected
   def configure_permitted_parameters
   	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
@@ -36,25 +37,6 @@ def product_available?(product)
   end
 end
 
-def clear_cart!
-  @cart = current_user.cart
-  @slots = @cart.slot.first
-  @slots.slot_one = nil
-  @slots.slot_two = nil
-  @slots.slot_three = nil
-  @slots.slot_four = nil
-  @slots.slot_five = nil
-
-  @slots.slot_six = nil
-  @slots.slot_seven = nil
-  @slots.slot_eight = nil
-  @slots.slot_nine = nil
-  @slots.slot_ten = nil
-  @slots.save
-  @cart.cart_count = 0
-  @cart.save
-end
-
 def authenticate_brand!
     if user_signed_in?
       if !current_user.is_brand?
@@ -67,37 +49,4 @@ def authenticate_brand!
   end
 end
 
-def get_total!(sold)
-  @total_numbers = []
-  @total = 0
-  sold.each do |item|
-    @total_numbers << item.product_price
-  end
-  @total_numbers.each do |num|
-    @total += num
-  end
-  return @total.to_f
-end
-
-def get_total_after!(total, brand)
-  @brand = brand
-  @per_length = @brand.percentage.to_s.length
-  case @per_length
-  when 1
-    @percentage = "0.0#{@brand.percentage}".to_f
-  when 2
-    @percentage = "0.#{@brand.percentage}".to_f
-  when 3
-    @percentage = "1".to_f
-  else
-    @percentage = "0".to_f
-  end
-  @total_before = total
-  @commission = @total_before * @percentage
-  @total_after = @total_before - @commission 
-
-
-  details = {"total_after" => @total_after, "commission" => @commission}
-  return details
-end
 end
