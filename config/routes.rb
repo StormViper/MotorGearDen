@@ -81,6 +81,9 @@ Rails.application.routes.draw do
     get '/affiliate/new', to: 'affiliate#new'
     post 'affiliate/create', to: 'affiliate#create'
     get '/affiliate/destroy', to: 'affiliate#destroy'
+    get '/affiliate/menu', to: 'affiliate#menu'
+    get '/affiliate/edit', to: 'affiliate#edit'
+    post 'affilaite/update', to: 'affiliate#update'
 
     get '/brand/new', to: 'brand#new'
     post '/brand/create', to: 'brand#create'

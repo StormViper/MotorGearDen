@@ -155,10 +155,22 @@ end
 
 def get_total_after!(total, brand)
   @brand = brand
-  @brand.percentage.to_s.length == 1 ? @percentage = "0.0#{@brand.percentage}".to_f : @percentage = "0.#{@brand.percentage}".to_f
+  @per_length = @brand.percentage.to_s.length
+  case @per_length
+  when 1
+    @percentage = "0.0#{@brand.percentage}".to_f
+  when 2
+    @percentage = "0.#{@brand.percentage}".to_f
+  when 3
+    @percentage = "1".to_f
+  else
+    @percentage = "0".to_f
+  end
   @total_before = total
   @commission = @total_before * @percentage
   @total_after = @total_before - @commission 
+
+
   details = {"total_after" => @total_after, "commission" => @commission}
   return details
 end

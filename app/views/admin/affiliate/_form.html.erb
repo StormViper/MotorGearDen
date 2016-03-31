@@ -1,0 +1,30 @@
+<h2 id="menu-header">Create a new affiliate</h2>
+<span class="help-block" id="help">This page is monitored and logged - only add new affiliates if you have all the correct details. 
+If you are using this page unauthorised, legal action will be taken against you.</span>
+<% @affiliate.errors.full_messages.each do |message| %>
+	<%= message %><br>
+<% end %>
+<%= form_for(@affiliate, url: affiliate_create_path, method: :post, :html => {multipart: true}) do |p|%>
+<div class="container" id="user-edit-container" align="center">
+	<div class="input-group">
+		<%= p.label "**Affiliate Name", id: "user-edit-label" %><br>
+		<%= p.text_field :name, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Image URL", id: "user-edit-label" %><br>
+		<%= p.text_field :image_url, class: "form-control", id: "form-user-edit" %>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Link URL", id: "user-edit-label" %><br>
+		<%= p.text_field :link_url, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group" id="affiliate-check">
+		<%= p.label "**Is enabled?", id: "user-edit-label-check" %>
+		<%= p.check_box :is_enabled?, class: "form-control", id: "form-user-edit-check" %><br>
+	</div>
+<div class="input-group">
+		<%= p.submit "Create affiliate", class: "btn btn-primary" %>
+</div>
+		<span class="help-block" id="help">All fields with '**' next to them are required!</span>
+</div>
+<% end %>
