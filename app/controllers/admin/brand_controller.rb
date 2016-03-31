@@ -9,8 +9,8 @@ class Admin::BrandController < ApplicationController
 	def show
 		@brand = Brand.find(params[:id])
 		@sold = PaidItem.where("brand_name LIKE ? AND brand_id LIKE ?", @brand.name, @brand.id)
-		@total = get_total!(@sold)
-		@details = get_total_after!(@total, @brand)
+		@total = BrandManager.get_total!(@sold)
+		@details = BrandManager.get_total_after!(@total, @brand)
 	end
 
 	def menu
