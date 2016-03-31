@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, if: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_products!, :get_user_total!, :clear_cart!,
+  helper_method :user_is_admin?, :authenticate_admin!, :product_available?, :get_user_total!, :clear_cart!,
                 :user_is_brand?, :get_brands!, :authenticate_brand!, :get_total!, :get_total_after!
-
+  include UserManager
 protected
   def configure_permitted_parameters
   	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
@@ -39,26 +39,7 @@ def product_available?(product)
   end
 end
 
-def get_user_products!
-    @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
-    @slots = @cart.slot.first
-    @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
-                  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
-    @user_products = []
-    @product = []
-    @slot_list.each do |item|
-    if item.nil?
-        p 'Item empty'
-      else        
-        @product << item
-    end
-    end
-      @product.each do |item|
-      items = Product.where(:product_id => item).first
-      @user_products << items
-    end
-    return @user_products
-end
+
 
 def get_user_total!
     @total = 0

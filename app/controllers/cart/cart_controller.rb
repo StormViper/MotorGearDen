@@ -60,7 +60,7 @@ class Cart::CartController < ApplicationController
 	end
 
 	def show
-		@user_products = get_user_products!
+		@user_products = UserManager.get_user_products!(current_user.id)
 		@total = get_user_total!
 		@cart = current_user.cart
 
