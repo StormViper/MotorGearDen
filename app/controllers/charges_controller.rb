@@ -2,7 +2,7 @@ class ChargesController < ApplicationController
 	before_action :authenticate_user!
 	def new
 		@cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
-		@user_products = get_user_products!
+		@user_products = UserManager.get_user_products!(current_user.id)
 		@total = get_user_total!
 
 		@cart.total = @total
@@ -10,7 +10,7 @@ class ChargesController < ApplicationController
 	end
 
 	def create
-		@user_products = get_user_products!
+		@user_products = UserManager.get_user_products!(current_user.id)
 		@cart = current_user.cart
 		@total = @cart.total
 		@amount = @cart.total * 100

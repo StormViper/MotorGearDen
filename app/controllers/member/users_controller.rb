@@ -16,10 +16,9 @@ class Member::UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-
 		if @user.update(user_params)
 			flash[:success] = "Saved profile settings"
-			redirect_to user_path(@user)
+			redirect_to edit_user_path(@user)
 		else
 			flash[:danger] = "Error occured please check settings"
 			render 'edit'
@@ -31,10 +30,10 @@ class Member::UsersController < ApplicationController
 
 		if @user.update(address_params)
 			flash[:success] = "Saved address settings"
-			redirect_to root_path
+			redirect_to edit_user_path(@user)
 		else	
 			flash[:danger] = "Error occured please re-check your input"
-			render 'new'
+			render 'edit'
 		end
 	end
 
