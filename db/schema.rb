@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330144840) do
+ActiveRecord::Schema.define(version: 20160331111502) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160330144840) do
     t.string  "website"
     t.integer "brand_id"
     t.integer "user_id"
-    t.float   "percentage"
+    t.integer "percentage"
   end
 
   create_table "carts", force: :cascade do |t|
