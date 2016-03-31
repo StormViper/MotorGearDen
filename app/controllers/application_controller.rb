@@ -154,8 +154,8 @@ def get_total!(sold)
 end
 
 def get_total_after!(total, brand)
-  @percentage = "0.#{@brand.percentage}".to_f
   @brand = brand
+  @brand.percentage.to_s.length == 1 ? @percentage = "0.0#{@brand.percentage}".to_f : @percentage = "0.#{@brand.percentage}".to_f
   @total_before = total
   @commission = @total_before * @percentage
   @total_after = @total_before - @commission 
