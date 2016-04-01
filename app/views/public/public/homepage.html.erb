@@ -11,7 +11,7 @@
 	<% else %>
 		<li id="liprod"><%= link_to "Product not available", cart_add_item_path(p.product_id), :disabled => :true if user_signed_in? %></li>
 	<% end %>
-	<li id="liprod"><div align="right"><%= link_to 'Delete this Product' , product_destroy_path(p), data: {confirm: "Are you sure?"}, id:"delete" if UserManager.user_is_admin?(current_user) %></div></li>
+	<li id="liprod"><div align="right"><%= link_to 'Delete this Product' , product_destroy_path(p), data: {confirm: "Are you sure?"}, id:"delete" if user_is_admin? %></div></li>
 	</ul>
 <% end %>
 </div>
