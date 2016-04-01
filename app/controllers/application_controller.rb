@@ -41,12 +41,10 @@ end
 
 def get_user_products!
     @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
-    @slots = @cart.slot.first
-    @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
-                  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
+    @slots = @cart.products
     @user_products = []
     @product = []
-    @slot_list.each do |item|
+    @slots.each do |item|
     if item.nil?
         p 'Item empty'
       else        
@@ -54,8 +52,8 @@ def get_user_products!
     end
     end
       @product.each do |item|
-      items = Product.where(:product_id => item).first
-      @user_products << items
+      items = Product.where(:product_id => item.id).first
+      @user_products << item
     end
     return @user_products
 end
@@ -63,22 +61,19 @@ end
 def get_user_total!
     @total = 0
     @cart = Cart.where(:user_id => current_user.id).first if user_signed_in?
-    @slots = @cart.slot.first
-    @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
-                  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
-
+    @slots = @cart.products
     @user_products = []
     @product = []
-    @slot_list.each do |item|
+    @slots.each do |item|
     if item.nil?
         p 'Item empty'
       else        
         @product << item
     end
     end
-      @product.each do |item|
-      items = Product.where(:product_id => item).first
-      @user_products << items
+    @product.each do |item|
+      items = Product.where(:product_id => item.id).first
+      @user_products << item
     end
     @user_products.each do |p|
       @total += p.product_price
@@ -88,19 +83,8 @@ end
 
 def clear_cart!
   @cart = current_user.cart
-  @slots = @cart.slot.first
-  @slots.slot_one = nil
-  @slots.slot_two = nil
-  @slots.slot_three = nil
-  @slots.slot_four = nil
-  @slots.slot_five = nil
-
-  @slots.slot_six = nil
-  @slots.slot_seven = nil
-  @slots.slot_eight = nil
-  @slots.slot_nine = nil
-  @slots.slot_ten = nil
-  @slots.save
+  @slots = @cart.products
+  @slots = []
   @cart.cart_count = 0
   @cart.save
 end
@@ -112,7 +96,7 @@ end
 def get_brands!(user, user_products)
     @user = user
     @cart = Cart.where(:user_id => @user.id).first
-    @slots = @cart.slot.first
+    @slots = @cart.products
     @user_products = user_products
       @products = []
       @user_products.each do |item|

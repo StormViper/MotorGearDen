@@ -7,12 +7,10 @@ class EmailPreview < ActionMailer::Preview
 		def checkout_email_preview
 		@user = User.first
     @cart = Cart.where(:user_id => @user.id).first
-    @slots = @cart.slot.first
-    @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
-                  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
+    @slots = @cart.products
     @user_products = []
     @product = []
-    @slot_list.each do |item|
+    @slots.each do |item|
     if item.nil?
         p 'Item empty'
       else        
@@ -36,13 +34,11 @@ class EmailPreview < ActionMailer::Preview
     def checkout_notify_brand_preview
     @user = User.first
     @cart = Cart.where(:user_id => @user.id).first
-    @slots = @cart.slot.first
-    @slot_list = [@slots.slot_one, @slots.slot_two, @slots.slot_three, @slots.slot_four, @slots.slot_five,
-                  @slots.slot_six, @slots.slot_seven, @slots.slot_eight, @slots.slot_nine, @slots.slot_ten]
+    @slots = @cart.products
     @user_products = []
     @product = []
 
-    @slot_list.each do |item|
+    @slots.each do |item|
     if item.nil?
         p 'Item empty'
       else        
@@ -50,8 +46,8 @@ class EmailPreview < ActionMailer::Preview
     end
     end
       @product.each do |item|
-      items = Product.where(:product_id => item).first
-      @user_products << items
+      items = Product.where(:product_id => item.id).first
+      @user_products << item
     end
       @products = []
       @user_products.each do |item|

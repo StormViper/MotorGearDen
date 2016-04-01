@@ -16,7 +16,6 @@ class Member::UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-
 		if @user.update(user_params)
 			flash[:success] = "Saved profile settings"
 			redirect_to user_path(@user)
@@ -28,7 +27,6 @@ class Member::UsersController < ApplicationController
 
 	def update_address
 		@user = User.find(current_user.id)
-
 		if @user.update(address_params)
 			flash[:success] = "Saved address settings"
 			redirect_to root_path

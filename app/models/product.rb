@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
-	has_many :carts
+	has_many :cart, through: :products_cart
 	has_many :products_category
+	has_many :products_cart
 	has_many :category, through: :products_category
 	has_many :paid_item
 	belongs_to :brand
