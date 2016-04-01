@@ -47,7 +47,7 @@ class Cart::CartController < ApplicationController
 
 
 	def empty_cart
-		CartManager.clear_cart!(current_user)
+		clear_cart!
 
 		flash[:warning] = "Your cart has been emptied."
 		redirect_to root_path
@@ -60,8 +60,8 @@ class Cart::CartController < ApplicationController
 	end
 
 	def show
-		@user_products = UserManager.get_user_products!(current_user.id)
-		@total = UserManager.get_user_total!(current_user)
+		@user_products = get_user_products!
+		@total = get_user_total!
 		@cart = current_user.cart
 
 		@cart.total = @total
