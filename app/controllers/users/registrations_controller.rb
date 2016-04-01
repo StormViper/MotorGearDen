@@ -11,20 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def create
      @user = User.new(user_params)
      if @user.save
-      p "USER SAVED LOGIN: #{@user.username}"
-      @cart = Cart.create(:user_id => @user.id, :cart_count => 0)
-      @cart.save
-      @user.cart_id = @cart.id
-      @user.save
-
-      @slot = Slot.create(:cart_id => @cart.id)
-      @slot.save
-      @cart.slot_id = @slot.id
-      @cart.save
-
+      CreateUser.new(@user)
       create_user_detail(@user)
-
-      Email.registration_email(@user).deliver
       redirect_to root_path
      else
       p "USER FAILED LOGIN: #{@user.username}"
