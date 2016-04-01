@@ -10,15 +10,6 @@ class CreateUser
     @cart.save
     @user.cart_id = @cart.id
     @user.save
-    create_cart_slots(@cart)
-	end
-
-	def create_cart_slots(cart)
-    @slot = Slot.create(:cart_id => cart.id)
-    @slot.save
-    cart.slot_id = @slot.id
-    cart.save
-    send_registration_email
 	end
 
 	def send_registration_email
