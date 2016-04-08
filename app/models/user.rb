@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_one :cart, dependent: :destroy
   belongs_to :brand
   belongs_to :user_detail, dependent: :destroy
+  has_many :user_wishes
+  has_many :products, :through => :user_wishes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_accessor :login
