@@ -18,6 +18,10 @@ If you are using this page unauthorised, legal action will be taken against you.
 		<%= p.label "**Link URL", id: "user-edit-label" %><br>
 		<%= p.text_field :link_url, class: "form-control", id: "form-user-edit" %><br>
 	</div>
+	<div class="input-group">
+		<%= p.label "**Affiliate name", id: "user-edit-label" %><br>
+		<%= p.text_field :affiliate_name, class: "form-control", id: "form-user-edit" %><br>
+	</div>
 	<div class="input-group" id="affiliate-check">
 		<%= p.label "**Is enabled?", id: "user-edit-label-check" %>
 		<%= p.check_box :is_enabled?, class: "form-control", id: "form-user-edit-check" %><br>

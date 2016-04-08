@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160408085055) do
+ActiveRecord::Schema.define(version: 20160408141401) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20160408085055) do
     t.string   "image_url"
     t.string   "link_url"
     t.boolean  "is_enabled?"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "affiliate_name"
   end
 
   create_table "brands", force: :cascade do |t|
