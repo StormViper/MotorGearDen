@@ -1,0 +1,9 @@
+<% @categories= Category.all.limit(5) %>
+<button id="hideme" onclick="hideCategory()">Hide me</button>
+<p id="categories-header">Categories</p>
+<ul id="categories-list">
+<% @categories.each do |c| %>
+	<li id="categories-list-item"><%= c.name %></li>
+<% end %>
+<li id="categories-list-item"><a href="#">View all categories</a></li>
+</ul>
