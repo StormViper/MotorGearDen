@@ -83,8 +83,7 @@ end
 
 def clear_cart!
   @cart = current_user.cart
-  @slots = @cart.products
-  @slots = []
+  @cart.products = []
   @cart.cart_count = 0
   @cart.save
 end

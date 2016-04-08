@@ -11,20 +11,33 @@ class HandleStripePayment
   end
 
   def create_customer
+  	ud = @current_user.user_detail
 	  customer = Stripe::Customer.create(
+	  		:description => @current_user.username,
 				:email => @current_user.email,
-				:card => @card
+				:card => @card,
+				:shipping => {
+					:address => {
+						:line1 => ud.address_line_one + ' ' + ud.address_line_two,
+						:city => ud.address_line_three,
+						:line2 => ud.address_line_four,
+						:postal_code => ud.address_line_five,
+					},
+					:name => ud.first_name + ' ' + ud.last_name,
+				},
 		)
 		set_customer_id(customer)
 		return customer
   end
 
   def charge_card
+  	ud = @current_user.user_detail
 		charge = Stripe::Charge.create(
 			:customer => @customer.id,
 			:amount => @amount,
-			:description => 'A customer',
-			:currency => 'GBP'
+			:description => "The customer #{@current_user.username} bought a product!",
+			:currency => 'GBP',
+			:receipt_email => @current_user.email,
 		)
 		return charge
   end
