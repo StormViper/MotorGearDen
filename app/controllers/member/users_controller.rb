@@ -43,6 +43,12 @@ class Member::UsersController < ApplicationController
 		redirect_to root_path
 	end
 
+	def add_to_wishlist
+		@product = Product.find(params[:format])
+		current_user.products << @product
+		redirect_to root_path
+	end
+
 private
 
 def user_params

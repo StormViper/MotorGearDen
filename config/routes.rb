@@ -97,5 +97,6 @@ Rails.application.routes.draw do
   scope module: 'member' do
     resources :users, only: [:show, :edit, :update, :destroy]
     get '/update_address', to: 'users#update_address'
+    post '/add_to_wishlist', to: 'users#add_to_wishlist'
   end
 end

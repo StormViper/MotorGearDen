@@ -3,6 +3,8 @@ class Product < ActiveRecord::Base
 	has_many :products_category
 	has_many :products_cart
 	has_many :category, through: :products_category
+	has_many :user_wishes
+	has_many :users, :through => :user_wishes
 	has_many :paid_item
 	belongs_to :brand
 	validates :product_id, presence: true, uniqueness: true
