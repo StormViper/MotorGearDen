@@ -2,6 +2,10 @@ class Member::UsersController < ApplicationController
 	before_action :authenticate_user!
 	def show
 		@user = User.find(params[:id])
+		@wishlist_before = @user.products if @user.products
+		@wishlist = [@wishlist_before[0]] if @wishlist_before.count >= 1
+		@wishlist = [@wishlist_before[0], @wishlist_before[1]] if @wishlist_before.count >= 2
+		@wishlist = [@wishlist_before[0], @wishlist_before[1], @wishlist_before[2]] if @wishlist_before.count >= 3
 		@imageholder = User.where(:email => "adam3692@image.com").first
 	end
 
