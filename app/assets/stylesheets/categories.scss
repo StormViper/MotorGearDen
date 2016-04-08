@@ -1,0 +1,50 @@
+div#categories {
+	position: fixed;
+	top: 5.65%;
+	width: 18.1%;
+	height: 300px;
+	border: 1px solid #80bfff;
+	background-color: #66b3ff;
+	opacity: 0.9;
+}
+
+#categories {
+	display: none;
+}
+
+p#categories-header {
+	font-size: 1.6em;
+	text-align: center;
+	font-weight: bold;
+	letter-spacing: -0.1em;
+	color: white;
+	text-shadow: 3px 3px black;
+}
+
+ul#categories-list {
+	list-style: none;
+	text-align: center;
+}
+
+ul li#categories-list-item {
+	color: white;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+ul li a {
+	color: black;
+}
+
+button#hideme {
+	background-color: #66b3ff;
+}
+
+button#hideme:hover {
+	background-color: #80bfff;
+}
+
+button#showme {
+	position: fixed;
+	top: 5.65%;
+	background-color: #66b3ff;
+}

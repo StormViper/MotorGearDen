@@ -6,7 +6,7 @@ If you are using this page unauthorised, legal action will be taken against you.
 <%= form_for(obj, url: affilaite_update_path, remote: true, method: :post, :html => {multipart: true}) do |p|%>
 <div class="container" id="user-edit-container" align="center">
 	<div class="input-group">
-		<%= p.label "**Affiliate Name", id: "user-edit-label" %><br>
+		<%= p.label "**Custom Name", id: "user-edit-label" %><br>
 		<%= p.text_field :name, class: "form-control", id: "form-user-edit" %><br>
 	</div>
 	<div class="input-group">
@@ -16,6 +16,10 @@ If you are using this page unauthorised, legal action will be taken against you.
 	<div class="input-group">
 		<%= p.label "**Link URL", id: "user-edit-label" %><br>
 		<%= p.text_field :link_url, class: "form-control", id: "form-user-edit" %><br>
+	</div>
+	<div class="input-group">
+		<%= p.label "**Affiliate name", id: "user-edit-label" %><br>
+		<%= p.text_field :affiliate_name, class: "form-control", id: "form-user-edit", disabled: :true %><br>
 	</div>
 	<div class="input-group" id="affiliate-check">
 		<%= p.label "**Is enabled?", id: "user-edit-label-check" %>

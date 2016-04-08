@@ -1,0 +1,10 @@
+<div class="products-home" align="center">
+<span class="help-block" style="color: white;">Please note these deals and discounts will open in another tab! :)</span>
+<% @affiliates.each do |a|%>
+<ul id="affiliates">
+<% if a.is_enabled? %>
+	<li><a href="<%= a.link_url %>" target="_blank"><img src="<%= a.image_url%>" id="product-pic"></a></li>
+<% end %>
+	</ul>
+<% end %>
+</div>

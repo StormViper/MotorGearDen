@@ -84,6 +84,7 @@ Rails.application.routes.draw do
     get '/affiliate/menu', to: 'affiliate#menu'
     get '/affiliate/edit', to: 'affiliate#edit'
     post 'affilaite/update', to: 'affiliate#update'
+    get '/discounts', to: 'affiliate#home'
 
     get '/brand/new', to: 'brand#new'
     post '/brand/create', to: 'brand#create'
@@ -97,5 +98,6 @@ Rails.application.routes.draw do
   scope module: 'member' do
     resources :users, only: [:show, :edit, :update, :destroy]
     get '/update_address', to: 'users#update_address'
+    post '/add_to_wishlist', to: 'users#add_to_wishlist'
   end
 end

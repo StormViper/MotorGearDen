@@ -2,6 +2,10 @@ class Member::UsersController < ApplicationController
 	before_action :authenticate_user!
 	def show
 		@user = User.find(params[:id])
+		@wishlist_before = @user.products if @user.products
+		@wishlist = [@wishlist_before[0]] if @wishlist_before.count >= 1
+		@wishlist = [@wishlist_before[0], @wishlist_before[1]] if @wishlist_before.count >= 2
+		@wishlist = [@wishlist_before[0], @wishlist_before[1], @wishlist_before[2]] if @wishlist_before.count >= 3
 		@imageholder = User.where(:email => "adam3692@image.com").first
 	end
 
@@ -43,6 +47,19 @@ class Member::UsersController < ApplicationController
 		redirect_to root_path
 	end
 
+	def add_to_wishlist
+		@product = Product.find(params[:format])
+		@check = check_if_duplicate(@product)
+		if @check == 'product already in wishlist'
+			flash[:danger] = "Product is already in wishlist"
+			redirect_to root_path
+		else
+			flash[:success] = "Product added to wishlist"
+			current_user.products << @product
+			redirect_to root_path
+		end
+	end
+
 private
 
 def user_params
@@ -51,5 +68,17 @@ end
 
 def address_params
 	params.require(:user).permit(:door_name_number, :street, :city, :borough, :postcode)
+end
+
+def check_if_duplicate(product)
+	user_wishes = current_user.products
+	product = product
+	msg = ''
+	user_wishes.each do |i|
+		if i == product
+			return msg = 'PRODUCT ALREADY IN WISHLIST'.downcase
+		end
+	end
+	return msg
 end
 end
