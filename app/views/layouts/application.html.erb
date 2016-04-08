@@ -9,6 +9,10 @@
 </head>
 <body>
   <%= render 'shared/header' %>
+<button id="showme" onclick="showCategory()">Show categories</button>
+<div id="categories">
+  <%= render 'shared/sub_categories' %>
+</div>
 <div class="container" id="maincontainer">
   <%= render 'shared/sub_header'%>
 	<%= render 'shared/flash' %>
