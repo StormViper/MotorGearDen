@@ -1,5 +1,36 @@
-
-	<%= link_to image_tag(@user.picture.url, class: "user-profile-picture"), root_path %><br>
-
-
-Hiya this is <%= @user.username %>'s account!
+<div id="user-profile">
+	<div id="profile-picture" align="center">
+		<%= link_to image_tag(@user.picture.url, class: "user-profile-picture"), root_path %>
+		<p id="user-name"><%= @user.username.capitalize %></p>
+	</div>
+<% if user_is_admin? %>
+	<div id="user-action-menu" align="right">
+		<ul>
+			<li id="action-menu-header">User Admin control</li>
+			<li id="user-action"><a href="#">Add Friend</a></li>
+			<li id="user-action"><a href="#">Warn</a></li>
+		</ul>
+	</div>
+<% end %>
+	<div id="user-wishlist">
+		<p id="user-name"><%= @user.username.capitalize %>'s Wishlist</p>
+<% if @wishlist %>
+		<% @wishlist.each do |p| %>
+		<div class="media" id="wishlist-media">
+  		<div class="media-left">
+    		<a href="#">
+      		<%= link_to image_tag(p.picture.url, class: "wishlist-item"), root_path %>
+					  <h4 class="media-heading" id="wishlist-header"><%= p.product_name %></h4>
+    		</a>
+  		</div>
+		</div>
+		<div id="wishlist-break"></div>
+		<% end %>
+<% else %>
+	<p>There appears to be no products in <%= @user.username %>'s wishlist!</p>
+<% end %>
+		<% if @wishlist_before.count >= 4 %>
+			<a href="#">see more of <%= @user.username %>'s wishlist</a>
+		<% end %>
+	</div>
+</div>
