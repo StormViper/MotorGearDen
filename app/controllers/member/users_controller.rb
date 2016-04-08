@@ -45,8 +45,15 @@ class Member::UsersController < ApplicationController
 
 	def add_to_wishlist
 		@product = Product.find(params[:format])
-		current_user.products << @product
-		redirect_to root_path
+		@check = check_if_duplicate(@product)
+		if @check == 'product already in wishlist'
+			flash[:danger] = "Product is already in wishlist"
+			redirect_to root_path
+		else
+			flash[:success] = "Product added to wishlist"
+			current_user.products << @product
+			redirect_to root_path
+		end
 	end
 
 private
@@ -57,5 +64,17 @@ end
 
 def address_params
 	params.require(:user).permit(:door_name_number, :street, :city, :borough, :postcode)
+end
+
+def check_if_duplicate(product)
+	user_wishes = current_user.products
+	product = product
+	msg = ''
+	user_wishes.each do |i|
+		if i == product
+			return msg = 'PRODUCT ALREADY IN WISHLIST'.downcase
+		end
+	end
+	return msg
 end
 end
