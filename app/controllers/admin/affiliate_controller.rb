@@ -1,5 +1,10 @@
 class Admin::AffiliateController < ApplicationController
-	before_action :authenticate_admin!
+	before_action :authenticate_admin!, except: [:home]
+
+	def home
+		@affiliates = Affiliate.all
+	end
+
 	def new
 		Rails.logger.info "*****The user #{current_user.username} just accessed the create affiliate page is s/he an admin?: #{current_user.admin?}*****"
 		@affiliate = Affiliate.new
@@ -54,6 +59,6 @@ class Admin::AffiliateController < ApplicationController
 private
 
 def affiliate_params
-	params.require(:affiliate).permit(:name, :image_url, :link_url, :is_enabled?)
+	params.require(:affiliate).permit(:name, :image_url, :link_url, :is_enabled?, :affiliate_name)
 end
 end
