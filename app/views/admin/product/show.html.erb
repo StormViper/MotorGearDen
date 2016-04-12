@@ -1,0 +1,14 @@
+<h1 id="product-header"><%= @product.product_name.capitalize %></h1>
+<div id="product-image-container">
+		<%= image_tag(@product.picture.url, alt: @product.product_name, size: "450x300", id: "product-image") %>
+		<div id="product-price">
+			£<%= @product.product_price %>
+		</div>
+	<div id="product-description">
+		<%= simple_format(@product.product_description.capitalize) %>
+	</div>
+	<div id="product-action">
+		<%= link_to "Add item to cart", cart_add_item_path(@product.id), method: :post, id: "product-add" if user_signed_in? %>
+		<div align="left"><%= link_to '', add_to_wishlist_path(@product.id), method: :post, class: "glyphicon glyphicon-heart", id: "wish-glyphicon-heart"  %></div>
+	</div>
+</div>

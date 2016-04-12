@@ -19,6 +19,10 @@ class Admin::ProductController < ApplicationController
 		end
 	end
 
+	def show
+		@product = Product.find(params[:id])
+	end
+
 	def destroy
 		@product = Product.find(params[:format])
 		Rails.logger.info "*****The user #{current_user.username} has just deleted the product '#{@product.product_name}(#{@product.product_id})' is s/he an admin? #{current_user.admin?}*****"

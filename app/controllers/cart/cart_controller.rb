@@ -9,7 +9,8 @@ class Cart::CartController < ApplicationController
 		@slots << @product
 		@cart.cart_count += 1
 		@cart.save
-		redirect_to root_path
+		flash[:success] = "Successfully added #{@product.product_name} to cart."
+		redirect_to product_path(@product.id)
 	end
 
 

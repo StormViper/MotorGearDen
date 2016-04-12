@@ -52,11 +52,11 @@ class Member::UsersController < ApplicationController
 		@check = check_if_duplicate(@product)
 		if @check == 'product already in wishlist'
 			flash[:danger] = "Product is already in wishlist"
-			redirect_to root_path
+			redirect_to product_path(@product.id)
 		else
 			flash[:success] = "Product added to wishlist"
 			current_user.products << @product
-			redirect_to root_path
+			redirect_to product_path(@product.id)
 		end
 	end
 

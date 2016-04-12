@@ -111,3 +111,30 @@ a#wish-glyphicon-heart {
 	border: 0px;
 	text-decoration: none;
 }
+
+h1#product-header {
+	size: 3em;
+	color: gold;
+	font-weight: bold;
+}
+
+div#product-image-container img#product-image {
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	padding: 8px;
+	-webkit-box-shadow: 3px 4px 3px #b62f2f;
+	-moz-box-shadow: 3px 4px 3px #b62f2f;
+	box-shadow: 3px 4px 3px #b62f2f;
+}
+
+div#product-image-container div#product-description {
+	font-size: 1.2em;
+	margin-top: 15px;
+	color: white;
+}
+
+div#product-image-container div#product-price {
+	font-size: 2em;
+	display: inline-block;
+	color: white;
+}

@@ -1,7 +1,7 @@
 <div class="products-home" align="center">
 <% @products.each do |p|%>
 <ul class="products">
-	<li id="liprod"><%= link_to p.product_name, root_path, id: "product-text" %></li>
+	<li id="liprod"><%= link_to p.product_name, product_path(p), id: "product-text" %></li>
 	<li id="liprod"><%= image_tag(p.picture.url, alt: p.product_name, size: "450x300", id: "product-pic") %></li>
 	<li id="liprod"><span id="product-text">Price: <%= p.product_price == 0.0 ? "N/A" : "£#{p.product_price}" %></span></li>
 	<li id="liprod"><span id="product-text">Brand: <%= p.brand.name %></span></li>

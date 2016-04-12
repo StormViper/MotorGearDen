@@ -13,7 +13,7 @@
 	<div class="dropdown">
   	<button onclick="headerDrop()" class="dropbtn">Create</button>
   	<div id="head-dropdown" class="dropdown-content">
-    	<%= link_to "Create new product", product_new_path, id: "menu-text-left" if user_is_admin? %>
+    	<%= link_to "Create new product", new_product_path, id: "menu-text-left" if user_is_admin? %>
     	<div class="seperator"></div>
     	<%= link_to 'Create new category', category_new_path, id: "menu-text-left" if user_is_admin? %>
     	<div class="seperator"></div>

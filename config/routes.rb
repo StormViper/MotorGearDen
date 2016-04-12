@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   end
 
   scope module: 'admin' do
-    get '/product/new', to: 'product#new'
+    resources :product, only: [:show, :new]
     post '/product/create', to: 'product#create'
     get '/product/destroy', to: 'product#destroy'
 
